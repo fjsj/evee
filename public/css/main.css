@@ -1,0 +1,334 @@
+body {
+    font-family: "Open Sans", "Segoe UI", sans-serif;
+    background: url(../img/diagmonds.png) repeat center center scroll;
+    padding-bottom: 40px;
+}
+
+.container-background {
+    background-color: #e0e0e0;
+}
+
+.navbar {
+    width: 940px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-inner {
+    border: none;
+}
+
+.navbar-fixed-top {
+    margin-bottom: 0px;
+}
+
+.navbar-inverse .navbar-inner {
+    background: #2d1892;
+}
+
+.navbar .navbar-inner {
+    min-height: 50px;
+}
+
+.navbar-inner .container {
+    line-height: 40px;
+}
+
+.navbar .nav {
+    font-family: "Exo", "Open Sans", "Segoe UI", sans-serif;
+}
+
+.navbar .nav > li {
+    line-height: 40px;
+}
+
+.navbar-inverse .nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .nav > li > a:hover, .navbar-inverse .nav > .active > a:hover {
+    color: #fd8c00; 
+}
+
+.navbar .nav .dropdown-toggle .caret {
+    margin-top: 18px;
+}
+
+.navbar .brand {
+    font-family: "Nova Flat", sans-serif;
+    color: white;
+    font-size: 36px;
+    line-height: 32px;
+    padding-left: 40px;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.navbar .brand:hover {
+    color: #fd8c00;
+}
+
+.navbar-form {
+    margin-right: 20px;
+}
+
+.navbar-form input, .navbar-form select, .navbar-form .radio, .navbar-form .checkbox {
+    margin-top: 15px;
+}
+
+.navbar .btn, .navbar .btn-group {
+    margin-top: 15px;
+}
+
+.hero-background {
+    background: url(../img/recife3.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/back.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/back.jpg', sizingMethod='scale')";
+}
+
+.hero-unit {
+    background: none;
+    padding: 90px 60px 40px 60px;
+    margin-bottom: 0px;
+    color: white;
+}
+
+.container-shadow {
+    background-image: linear-gradient(bottom, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 100%);
+    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 100%);
+    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 100%);
+    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.5) 100%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, rgba(0,0,0,0.8)), color-stop(0.8, rgba(0,0,0,0.5)));
+}
+
+.hero-unit h1 {
+    font-family: "Convergence", "Open Sans", "Segoe UI", sans-serif;
+}
+
+.hero-unit p:last-child {
+    margin-bottom: 0px;
+}
+
+.span4 {
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 330px;
+}
+
+.dayperiod {
+    float: left;
+    width: 100%;
+}
+
+.dayperiod .dayheader {
+    background-color: white;
+    padding-left: 12px;
+}
+
+.dayperiod .dayheader h3 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.morning .dayheader {
+    border-left: 6px #b73700 solid;
+    background-color: #ff5400;
+    color: white;
+}
+
+.afternoon .dayheader {
+    border-left: 6px #bf005f solid;
+    background-color: #ff007f;
+    color: white;
+}
+
+.night .dayheader {
+    border-left: 6px #15008e solid;
+    background-color: #2b0ad1;
+    color: white;
+}
+
+.morning .daycontent {
+    border-left: 6px #b73700 solid;
+}
+
+.afternoon .daycontent {
+    border-left: 6px #bf005f solid;
+}
+
+.night .daycontent {
+    border-left: 6px #15008e solid;
+}
+
+time span {
+    font-family: 'pe-analogclock';
+}
+
+.dayperiod .daycontent {
+    background-color: #e0e0e0;
+}
+
+.dayperiod .daycontent .event-info {
+    width: 100%;
+    border-bottom: 1px #cecece solid;
+}
+
+.dayperiod .daycontent .event-info:last-child {
+    border-bottom: none;
+}
+
+.dayperiod .daycontent .event-info .event-picture {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.dayperiod .daycontent .event-info .event-picture img {
+    width: 100px;
+    height: 100px;
+}
+
+.dayperiod .daycontent .event-info .event-description {
+    font-family: "Exo", "Open Sans", "Segoe UI", sans-serif;
+    display: inline-block;
+    min-width: 236px;
+    margin-left: 4px;
+}
+
+.dayperiod .daycontent .event-info:last-child .event-description {
+    margin-bottom: 0px;
+}
+
+.dayperiod .daycontent .event-info .event-description h4 {
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+.event-column1 {
+    display: inline-block;
+    float: left;
+    clear: right;
+    min-width: 186px;
+}
+
+.event-column2 {
+    display: inline-block;
+    float: right;
+    min-width: 46px;
+    margin-right: 4px;
+}
+
+.male, .female {
+    display: inline-block;
+    width: 14px;
+    height: 16px;
+    margin-top: 2px;
+    line-height: 16px;
+    vertical-align: text-top;
+    background-repeat: no-repeat;
+}
+
+.male {
+    background-image: url("../img/male.png");
+}
+
+.female {
+    background-image: url("../img/female.png");
+}
+
+.dayperiod .daycontent .event-info .event-description .event-attendees img {
+    margin-left: 2px;
+}
+
+.mapheader {
+    border-left: 6px #a00012 solid;
+    background-color: #e20d2a;
+    color: white;
+}
+
+.mapheader h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 8px;
+}
+
+.mapheader h3 img {
+    vertical-align: text-top;
+    margin-top: 2px;
+    margin-right: 4px;
+}
+
+.gmap {
+    width: 100%;
+    min-height: 300px;
+}
+
+footer {
+    background-color: #111;
+    color: #cecece;
+}
+
+footer p {
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 2px;
+}
+
+footer a {
+    color: #8776e8;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #8776e8;
+}
+
+@media (min-width: 1200px) {
+    .navbar {
+        width: 1170px;
+    }
+    .dayperiod {
+        width: 390px;
+    }
+    .dayperiod .daycontent .event-description {
+        width: 262px;
+    }
+    .hero-background {
+        background-position: 0px -136px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .navbar {
+        width: 724px;
+    }
+}
+
+@media (max-width: 979px) {
+    .navbar {
+        width: 724px;
+    }
+    .navbar .brand {
+        padding-left: 10px;
+    }
+    .hero-unit {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .navbar {
+        width: auto;
+    }
+    .hero-unit {
+        padding-top: 20px;
+    }
+}
