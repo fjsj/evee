@@ -4,6 +4,10 @@ body {
     padding-bottom: 40px;
 }
 
+body > div.container {
+    min-width: 352px;
+}
+
 .container-background {
     background-color: #e0e0e0;
 }
@@ -194,7 +198,6 @@ time span {
 .dayperiod .daycontent .event-info .event-description {
     font-family: "Exo", "Open Sans", "Segoe UI", sans-serif;
     display: inline-block;
-    min-width: 236px;
     margin-left: 4px;
 }
 
@@ -207,10 +210,15 @@ time span {
     margin-bottom: 0px;
 }
 
+.event-row {
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
 .event-column1 {
     display: inline-block;
     float: left;
-    clear: right;
     min-width: 186px;
 }
 
