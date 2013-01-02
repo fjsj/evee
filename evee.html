@@ -123,7 +123,9 @@
 
 <template name="dayEvents">
   {{#ifIsNull events}}
-    <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando...
+    <div class="row-fluid events-loading">
+      <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
+    </div>
   {{else}}
     {{#if events}}
       {{#each events}}
@@ -156,7 +158,9 @@
 
 <template name="nightEvents">
   {{#ifIsNull events}}
-    Carregando...
+    <div class="row-fluid events-loading">
+      <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
+    </div>
   {{else}}
     {{#if events}}
       {{#each events}}

@@ -4,10 +4,6 @@ body {
     padding-bottom: 40px;
 }
 
-body > div.container {
-    min-width: 352px;
-}
-
 .container-background {
     background-color: #e0e0e0;
 }
@@ -123,7 +119,6 @@ body > div.container {
 }
 
 .dayperiod {
-    float: left;
     width: 100%;
 }
 
@@ -157,17 +152,20 @@ body > div.container {
     border-left: 6px #bf005f solid;
 }
 
+.daycontent .events-loading {
+    padding: 1em;
+}
+
 time span {
     font-family: 'pe-analogclock';
 }
 
 .dayperiod .daycontent {
-    float: left;
     background: url(../img/hexellence.png) repeat center center scroll;
 }
 
 .dayperiod .daycontent .event-info {
-    float: left;
+    overflow: hidden;
     width: 100%;
     border-bottom: 1px #cecece solid;
 }
@@ -216,7 +214,6 @@ time span {
 }
 
 .event-row {
-    float: left;
     width: 100%;
 }
 
@@ -309,6 +306,7 @@ footer a:hover {
     }
     .dayperiod {
         width: 50%;
+        float: left;
     }
     .dayperiod .daycontent .event-info .event-description .event-name h4,
     .dayperiod .daycontent .event-info .event-description .event-location {
