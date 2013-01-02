@@ -173,10 +173,12 @@ time span {
 }
 
 .dayperiod .daycontent {
+    float: left;
     background-color: #e0e0e0;
 }
 
 .dayperiod .daycontent .event-info {
+    float: left;
     width: 100%;
     border-bottom: 1px #cecece solid;
 }
@@ -186,7 +188,9 @@ time span {
 }
 
 .dayperiod .daycontent .event-info .event-picture {
-    display: inline-block;
+    float: left;
+    width: 100px;
+    height: 100px;
     vertical-align: top;
 }
 
@@ -196,9 +200,8 @@ time span {
 }
 
 .dayperiod .daycontent .event-info .event-description {
+    margin-left: 104px;
     font-family: "Open Sans", "Segoe UI", sans-serif;
-    display: inline-block;
-    margin-left: 2px;
 }
 
 .dayperiod .daycontent .event-info:last-child .event-description {
@@ -224,7 +227,6 @@ time span {
 
 .event-row {
     float: left;
-    clear: both;
     width: 100%;
 }
 
