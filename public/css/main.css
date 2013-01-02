@@ -1,6 +1,6 @@
 body {
-    font-family: "Open Sans", "Segoe UI", sans-serif;
-    background: url(../img/diagmonds.png) repeat center center scroll;
+    font-family: "PT Sans", "Segoe UI", "Verdana", "Lucida Grande", sans-serif;
+    background: url(../img/hexabump.png) repeat center center scroll;
     padding-bottom: 40px;
 }
 
@@ -39,7 +39,6 @@ body > div.container {
 }
 
 .navbar .nav {
-    font-family: "Exo", "Open Sans", "Segoe UI", sans-serif;
 }
 
 .navbar .nav > li {
@@ -138,34 +137,24 @@ body > div.container {
     margin-top: 0px;
 }
 
-.morning .dayheader {
+.day .dayheader {
     border-left: 6px #b73700 solid;
     background-color: #ff5400;
     color: white;
 }
 
-.afternoon .dayheader {
+.night .dayheader {
     border-left: 6px #bf005f solid;
     background-color: #ff007f;
     color: white;
 }
 
-.night .dayheader {
-    border-left: 6px #15008e solid;
-    background-color: #2b0ad1;
-    color: white;
-}
-
-.morning .daycontent {
+.day .daycontent {
     border-left: 6px #b73700 solid;
 }
 
-.afternoon .daycontent {
-    border-left: 6px #bf005f solid;
-}
-
 .night .daycontent {
-    border-left: 6px #15008e solid;
+    border-left: 6px #bf005f solid;
 }
 
 time span {
@@ -174,7 +163,7 @@ time span {
 
 .dayperiod .daycontent {
     float: left;
-    background-color: #e0e0e0;
+    background: url(../img/hexellence.png) repeat center center scroll;
 }
 
 .dayperiod .daycontent .event-info {
@@ -201,12 +190,18 @@ time span {
 
 .dayperiod .daycontent .event-info .event-description {
     margin-left: 80px;
-    font-family: "Open Sans", "Segoe UI", sans-serif;
     line-height: 16px;
 }
 
 .dayperiod .daycontent .event-info:last-child .event-description {
     margin-bottom: 0px;
+}
+
+.dayperiod .daycontent .event-info .event-description i[class^="icon-"],
+.dayperiod .daycontent .event-info .event-description i[class*=" icon-"] {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
 }
 
 .dayperiod .daycontent .event-info .event-description .event-name {
@@ -217,7 +212,7 @@ time span {
     font-weight: normal;
     margin-top: 2px;
     margin-bottom: 0px;
-    line-height: 18px;
+    line-height: 20px;
 }
 
 .event-row {
@@ -242,6 +237,7 @@ time span {
 
 .male {
     background-image: url("../img/male.png");
+    margin-left: 4px;
 }
 
 .female {
@@ -308,11 +304,19 @@ footer a:hover {
     .navbar {
         width: 1170px;
     }
-    .dayperiod {
-        width: 390px;
-    }
     .hero-background {
         background-position: 0px -136px;
+    }
+    .dayperiod {
+        width: 50%;
+    }
+    .dayperiod .daycontent .event-info .event-description .event-name h4,
+    .dayperiod .daycontent .event-info .event-description .event-location {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 492px;
     }
 }
 

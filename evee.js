@@ -19,7 +19,10 @@ if (Meteor.isClient) {
   Template.heroUnit.callToAction = function () {
     return "Cadastre-se agora mesmo com o seu Facebook e veja quais são e quem vai para os principais eventos da cidade!";
   };
-  Template.morningEvents.events = function () {
+  Template.dayEvents.events = function () {
+    return Session.get("events") || null;
+  };
+  Template.nightEvents.events = function () {
     return Session.get("events") || null;
   };
   Meteor.startup(function () {

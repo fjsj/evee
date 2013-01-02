@@ -5,12 +5,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Google Fonts -->
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans|Nova+Flat|Exo|Convergence" rel="stylesheet" type="text/css">
+  <!-- Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans|Nova+Flat|Convergence" rel="stylesheet" type="text/css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css" rel="stylesheet">
 
   <!-- Styles -->
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">-->
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="css/pe-analogclock.css" rel="stylesheet">
 
@@ -76,96 +78,16 @@
     </div>
 
     <div class="row-fluid row-days">
-      <div class="dayperiod morning">
-        <div class="dayheader"><h3><time datetime="2013-01-01 09:00:00"><span class="hour-08"><span class="minute-00"></span></span> Manhã</time></h3></div>
+      <div class="dayperiod day">
+        <div class="dayheader"><h3><time datetime="2013-01-01 08:00:00"><span class="hour-08"><span class="minute-00"></span></span> Dia</time></h3></div>
         <div class="daycontent">
-          {{> morningEvents}}
-        </div>
-      </div>
-      <div class="dayperiod afternoon">
-        <div class="dayheader"><h3><time datetime="2013-01-01 15:00:00"><span class="hour-14"><span class="minute-00"></span></span> Tarde</time></h3></div>
-        <div class="daycontent">
-          <div class="event-info">
-            <div class="event-picture">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c0.0.160.160/p160x160/276840_357774234319281_2069042890_n.jpg" alt="Facebook event">
-            </div>
-            <div class="event-description">
-              <h4>Nome do evento</h4>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-time"></i> Local do evento</div>
-                <div class="event-column2"><i class="female"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-map-marker"></i> Local do evento</div>
-                <div class="event-column2"><i class="male"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-attendees"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/623474_731447137_1281307959_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/202997_1792877441_1430264515_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/371810_100000659458579_1453717433_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/276064_1393170928_59423919_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/195275_100001107608960_3613670_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/187463_1085806985_995801655_q.jpg" alt="Facebook user"><img class="hidden-phone" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/370005_1344906338_547672986_q.jpg" alt="Facebook user"></div>
-              </div>
-            </div>
-          </div>
-          <div class="event-info">
-            <div class="event-picture">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c0.0.160.160/p160x160/276840_357774234319281_2069042890_n.jpg" alt="Facebook event">
-            </div>
-            <div class="event-description">
-              <h4>Nome do evento</h4>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-time"></i> Local do evento</div>
-                <div class="event-column2"><i class="female"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-map-marker"></i> Local do evento</div>
-                <div class="event-column2"><i class="male"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-attendees"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/623474_731447137_1281307959_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/202997_1792877441_1430264515_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/371810_100000659458579_1453717433_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/276064_1393170928_59423919_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/195275_100001107608960_3613670_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/187463_1085806985_995801655_q.jpg" alt="Facebook user"><img class="hidden-phone" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/370005_1344906338_547672986_q.jpg" alt="Facebook user"></div>
-              </div>
-            </div>
-          </div>
+          {{> dayEvents}}
         </div>
       </div>
       <div class="dayperiod night">
-        <div class="dayheader"><h3><time datetime="2013-01-01 21:00:00"><span class="hour-20"><span class="minute-00"></span></span> Noite</time></h3></div>
+        <div class="dayheader"><h3><time datetime="2013-01-01 18:00:00"><span class="hour-20"><span class="minute-00"></span></span> Noite</time></h3></div>
         <div class="daycontent">
-          <div class="event-info">
-            <div class="event-picture">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c0.0.160.160/p160x160/276840_357774234319281_2069042890_n.jpg" alt="Facebook event">
-            </div>
-            <div class="event-description">
-              <h4>Nome do evento</h4>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-time"></i> Local do evento</div>
-                <div class="event-column2"><i class="female"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-map-marker"></i> Local do evento</div>
-                <div class="event-column2"><i class="male"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-attendees"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/623474_731447137_1281307959_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/202997_1792877441_1430264515_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/371810_100000659458579_1453717433_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/276064_1393170928_59423919_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/195275_100001107608960_3613670_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/187463_1085806985_995801655_q.jpg" alt="Facebook user"><img class="hidden-phone" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/370005_1344906338_547672986_q.jpg" alt="Facebook user"></div>
-              </div>
-            </div>
-          </div>
-          <div class="event-info">
-            <div class="event-picture">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c0.0.160.160/p160x160/276840_357774234319281_2069042890_n.jpg" alt="Facebook event">
-            </div>
-            <div class="event-description">
-              <h4>Nome do evento</h4>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-time"></i> Local do evento</div>
-                <div class="event-column2"><i class="female"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-column1"><i class="icon-map-marker"></i> Local do evento</div>
-                <div class="event-column2"><i class="male"></i> 50%</div>
-              </div>
-              <div class="event-row">
-                <div class="event-attendees"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/623474_731447137_1281307959_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/202997_1792877441_1430264515_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/371810_100000659458579_1453717433_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/276064_1393170928_59423919_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc6/s34x34/195275_100001107608960_3613670_q.jpg" alt="Facebook user"><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/s34x34/187463_1085806985_995801655_q.jpg" alt="Facebook user"><img class="hidden-phone" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/s34x34/370005_1344906338_547672986_q.jpg" alt="Facebook user"></div>
-              </div>
-            </div>
-          </div>
+          {{> nightEvents}}
         </div>
       </div>
     </div>
@@ -199,7 +121,40 @@
   </div>
 </template>
 
-<template name="morningEvents">
+<template name="dayEvents">
+  {{#ifIsNull events}}
+    <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando...
+  {{else}}
+    {{#if events}}
+      {{#each events}}
+        <div class="event-info">
+          <div class="event-picture">
+            <img src="{{picture.data.url}}" alt="{{name}}">
+          </div>
+          <div class="event-description">
+            <div class="event-name" title="{{name}}">
+              <h4>{{name}}</h4>
+            </div>
+            <div class="event-row event-time">
+              <i class="icon-time"></i> {{start_time}}
+            </div>
+            <div class="event-row event-location" title="{{location}}">
+              <i class="icon-map-marker"></i> {{location}}
+            </div>
+            <div class="event-row event-ratio">
+              <i class="female"></i> 50%
+              <i class="male"></i> 50%
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      Sem eventos
+    {{/if}}
+  {{/ifIsNull}}
+</template>
+
+<template name="nightEvents">
   {{#ifIsNull events}}
     Carregando...
   {{else}}
@@ -207,24 +162,21 @@
       {{#each events}}
         <div class="event-info">
           <div class="event-picture">
-            <img src="{{picture.data.url}}" alt="Facebook event">
+            <img src="{{picture.data.url}}" alt="{{name}}">
           </div>
           <div class="event-description">
-            <div class="event-name">
+            <div class="event-name" title="{{name}}">
               <h4>{{name}}</h4>
             </div>
             <div class="event-row event-time">
               <i class="icon-time"></i> {{start_time}}
             </div>
-            <div class="event-row event-location">
+            <div class="event-row event-location" title="{{location}}">
               <i class="icon-map-marker"></i> {{location}}
             </div>
             <div class="event-row event-ratio">
               <i class="female"></i> 50%
               <i class="male"></i> 50%
-            </div>
-            <div class="event-row event-attendees">
-              {{#each attending.data}}<img src="{{picture.data.url}}" alt="{{name}}">{{/each}}
             </div>
           </div>
         </div>
