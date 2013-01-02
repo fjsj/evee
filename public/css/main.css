@@ -208,21 +208,16 @@ time span {
     margin-bottom: 0px;
 }
 
-.dayperiod .daycontent .event-info .event-description h4 {
+.dayperiod .daycontent .event-info .event-description .event-name {
+    height: 1.75em;
+    overflow: hidden;
+}
+
+.dayperiod .daycontent .event-info .event-description .event-name h4 {
     font-size: 16px;
     font-weight: normal;
     margin-top: 4px;
     margin-bottom: 0px;
-
-    /* http://stackoverflow.com/questions/1199352/smart-way-to-shorten-long-strings-with-javascript */
-    /* http://mattsnider.com/css-string-truncation-with-ellipsis/ */
-    white-space: nowrap;
-    width: 100%;                   /* IE6 needs any width */
-    overflow: hidden;              /* "overflow" value must be different from "visible" */ 
-    -o-text-overflow: ellipsis;    /* Opera */
-    -ms-text-overflow: ellipsis;   /* IE */
-    -moz-binding: url("css/xml/ellipsis.xml#ellipsis"); /* Firefox old versions */
-    text-overflow: ellipsis;       /* IE, WebKit */
 }
 
 .event-row {
