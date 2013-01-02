@@ -24,7 +24,10 @@ if (Meteor.isClient) {
   };
   Template.morningEvents.rendered = function () {
     // see: http://dotdotdot.frebsite.nl/
-    $('.event-name').dotdotdot({watch: true});
+    var $eventName = $('.event-name');
+    if ($eventName.length) {
+      $eventName.dotdotdot({watch: true});
+    }
   }
   Meteor.startup(function () {
     $('.gmap').mobileGmap();
