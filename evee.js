@@ -8,7 +8,7 @@ if (Meteor.isClient) {
   });
 
   function fetchEvents (accessToken, callback) {
-    var url = "https://graph.facebook.com/acasadocachorropreto/events?fields=id,description,start_time,end_time,location,name,venue,picture.width(100).height(100).type(square)";
+    var url = "https://graph.facebook.com/acasadocachorropreto/events?fields=id,description,start_time,end_time,location,name,venue,picture.width(100).height(100).type(square),attending.limit(20).fields(name, picture.type(square))";
     url += "&access_token=" + accessToken;
     Meteor.http.get(url, {timeout: 30000}, callback);
   }

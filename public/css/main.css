@@ -202,6 +202,7 @@ time span {
 .dayperiod .daycontent .event-info .event-description {
     margin-left: 80px;
     font-family: "Open Sans", "Segoe UI", sans-serif;
+    line-height: 16px;
 }
 
 .dayperiod .daycontent .event-info:last-child .event-description {
@@ -214,8 +215,9 @@ time span {
 .dayperiod .daycontent .event-info .event-description .event-name h4 {
     font-size: 16px;
     font-weight: normal;
-    margin-top: 0px;
+    margin-top: 2px;
     margin-bottom: 0px;
+    line-height: 18px;
 }
 
 .event-row {
@@ -228,15 +230,12 @@ time span {
 }
 
 .dayperiod .daycontent .event-info .event-description .event-ratio {
-    display: inline-block;
-
 }
 
 .male, .female {
     display: inline-block;
     width: 14px;
     height: 16px;
-    line-height: 16px;
     vertical-align: middle;
     background-repeat: no-repeat;
 }
@@ -252,15 +251,13 @@ time span {
 .dayperiod .daycontent .event-info .event-description .event-attendees {
     display: inline-block;
     vertical-align: top;
-    margin-top: 3px;
-}
-
-.dayperiod .daycontent .event-info .event-description .event-attendees img:first-child {
-    margin-left: 0px;
+    height: 35px;
+    overflow: hidden;
 }
 
 .dayperiod .daycontent .event-info .event-description .event-attendees img {
-    margin-left: 1px;
+    height: 35px;
+    width: 35px;
 }
 
 .mapheader {
@@ -313,9 +310,6 @@ footer a:hover {
     }
     .dayperiod {
         width: 390px;
-    }
-    .dayperiod .daycontent .event-description {
-        width: 262px;
     }
     .hero-background {
         background-position: 0px -136px;
