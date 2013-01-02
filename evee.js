@@ -22,13 +22,6 @@ if (Meteor.isClient) {
   Template.morningEvents.events = function () {
     return Session.get("events") || null;
   };
-  Template.morningEvents.rendered = function () {
-    // see: http://dotdotdot.frebsite.nl/
-    var $eventName = $('.event-name');
-    if ($eventName.length) {
-      $eventName.dotdotdot({watch: true});
-    }
-  }
   Meteor.startup(function () {
     $('.gmap').mobileGmap();
     fetchEvents(fbAccessToken, function (error, result) {

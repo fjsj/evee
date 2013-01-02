@@ -189,18 +189,18 @@ time span {
 
 .dayperiod .daycontent .event-info .event-picture {
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     vertical-align: top;
 }
 
 .dayperiod .daycontent .event-info .event-picture img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
 }
 
 .dayperiod .daycontent .event-info .event-description {
-    margin-left: 104px;
+    margin-left: 80px;
     font-family: "Open Sans", "Segoe UI", sans-serif;
 }
 
@@ -209,14 +209,12 @@ time span {
 }
 
 .dayperiod .daycontent .event-info .event-description .event-name {
-    height: 1.75em;
-    overflow: hidden;
 }
 
 .dayperiod .daycontent .event-info .event-description .event-name h4 {
     font-size: 16px;
     font-weight: normal;
-    margin-top: 4px;
+    margin-top: 0px;
     margin-bottom: 0px;
 }
 
@@ -225,29 +223,21 @@ time span {
     width: 100%;
 }
 
-.event-column1 {
-    display: inline-block;
-    text-align: left;
-    width: 49%;
-    height: 1.25em;
-    overflow: hidden;
+.dayperiod .daycontent .event-info .event-description .event-time,
+.dayperiod .daycontent .event-info .event-description .event-location {
 }
 
-.event-column2 {
+.dayperiod .daycontent .event-info .event-description .event-ratio {
     display: inline-block;
-    text-align: right;
-    width: 49%;
-    height: 1.25em;
-    overflow: hidden;
+
 }
 
 .male, .female {
     display: inline-block;
     width: 14px;
     height: 16px;
-    margin-top: 2px;
     line-height: 16px;
-    vertical-align: text-top;
+    vertical-align: middle;
     background-repeat: no-repeat;
 }
 
@@ -259,8 +249,18 @@ time span {
     background-image: url("../img/female.png");
 }
 
+.dayperiod .daycontent .event-info .event-description .event-attendees {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.dayperiod .daycontent .event-info .event-description .event-attendees img:first-child {
+    margin-left: 0px;
+}
+
 .dayperiod .daycontent .event-info .event-description .event-attendees img {
-    margin-left: 2px;
+    margin-left: 1px;
 }
 
 .mapheader {
