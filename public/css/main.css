@@ -227,23 +227,18 @@ time span {
 
 .event-column1 {
     display: inline-block;
-    float: left;
-    min-width: 186px;
-
-    white-space: nowrap;
-    width: 186px;                  /* IE6 needs any width */
-    overflow: hidden;              /* "overflow" value must be different from "visible" */ 
-    -o-text-overflow: ellipsis;    /* Opera */
-    -ms-text-overflow: ellipsis;   /* IE */
-    -moz-binding: url("css/xml/ellipsis.xml#ellipsis"); /* Firefox old versions */
-    text-overflow: ellipsis;       /* IE, WebKit */
+    text-align: left;
+    width: 49%;
+    height: 1.25em;
+    overflow: hidden;
 }
 
 .event-column2 {
     display: inline-block;
-    float: right;
-    min-width: 46px;
-    margin-right: 4px;
+    text-align: right;
+    width: 49%;
+    height: 1.25em;
+    overflow: hidden;
 }
 
 .male, .female {
