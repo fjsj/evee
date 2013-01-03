@@ -30,7 +30,7 @@ if (Meteor.isClient) {
   Meteor.autorun(function() {
     var userId = Meteor.userId();
     if (Meteor.userId()) {
-      Meteor.call("getAccessToken", function(error, accessToken){
+      Meteor.call("getAccessToken", function (error, accessToken) {
         fetchEvents(accessToken, function (error, result) {
           if (result.statusCode == 200) {
             var json = JSON.parse(result.content);
@@ -78,13 +78,17 @@ if (Meteor.isClient) {
   });
   Meteor.startup(function () {
     $('.gmap').mobileGmap();
+    $('#datepicker').datepicker({
+      format: 'dd/mm/yyyy'
+    });
+    $('#datepicker input').val(moment().format("DD/MM/YYYY"));
   });
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     Meteor.methods({
-      getAccessToken : function() {
+      getAccessToken : function () {
         try {
           return Meteor.user().services.facebook.accessToken;
         } catch (e) {
