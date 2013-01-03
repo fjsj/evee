@@ -73,7 +73,10 @@
 
   <div class="container container-background">
     <div class="hero-background">
-      {{> heroUnit}}
+      <div class="hero-unit container-shadow">
+        <h1>Seus eventos do Facebook em um só lugar</h1>
+        <h2>Entre e veja os eventos do Facebook que você e seus amigos foram convidados. Uma visualização fácil e rápida de todos eventos relevantes para você.</h2>
+      </div>
     </div>
 
     <div class="row-steps-fluid">
@@ -128,18 +131,12 @@
   </div> <!-- /container -->
 </body>
 
-<template name="heroUnit">
-  <div class="hero-unit container-shadow">
-    <h1>{{message}}</h1>
-    <p>{{callToAction}}</p>
-    <p><a class="btn btn-primary btn-large">Entrar com o Facebook</a></p>
-  </div>
-</template>
-
 <template name="dayEvents">
   {{#ifIsNull events}}
-    <div class="row-fluid events-loading">
-      <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
+    <div class="row-fluid">
+      <div class="events-loading">
+        <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
+      </div>
     </div>
   {{else}}
     {{#if events}}
@@ -173,8 +170,10 @@
 
 <template name="nightEvents">
   {{#ifIsNull events}}
-    <div class="row-fluid events-loading">
-      <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
+    <div class="row-fluid">
+      <div class="events-loading">
+        <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
+      </div>
     </div>
   {{else}}
     {{#if events}}

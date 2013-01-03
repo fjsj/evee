@@ -107,6 +107,15 @@ body {
 
 .hero-unit h1 {
     font-family: "Convergence", "PT Sans", "Segoe UI", sans-serif;
+    font-size: 48px;
+}
+
+.hero-unit h2 {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: normal;
+    margin-top: 8px;
+    margin-bottom: 0px;
 }
 
 .hero-unit p:last-child {
@@ -340,6 +349,7 @@ footer a:hover {
     color: #8776e8;
 }
 
+/* Large desktop */
 @media (min-width: 1200px) {
     .navbar {
         width: 1170px;
@@ -357,12 +367,14 @@ footer a:hover {
     }
 }
 
+/* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
     .navbar {
         width: 724px;
     }
 }
 
+/* Landscape phone to portrait tablet */
 @media (max-width: 979px) {
     .navbar {
         width: 724px;
@@ -384,6 +396,7 @@ footer a:hover {
     }
 }
 
+/* Landscape phones and down */
 @media (max-width: 767px) {
     body {
         padding-left: 0px;
@@ -394,6 +407,10 @@ footer a:hover {
     }
     .hero-unit {
         padding-top: 20px;
+    }
+    .hero-unit h1 {
+        font-family: "Convergence", "PT Sans", "Segoe UI", sans-serif;
+        font-size: 20px;
     }
     .row-steps-fluid {
         display: block;
