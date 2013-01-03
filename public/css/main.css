@@ -202,7 +202,7 @@ body {
     border-left: 6px #211f30 solid;
 }
 
-.day-content .events-loading {
+.day-content .events-info-message {
     padding: 1em;
 }
 

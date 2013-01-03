@@ -1,4 +1,6 @@
 if (Meteor.isClient) {
+  var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
+
   Handlebars.registerHelper('ifIsNull', function(value, options) {
     if (value === null) {
       return options.fn(this);
@@ -6,7 +8,10 @@ if (Meteor.isClient) {
       return options.inverse(this);
     }
   });
-
+  Handlebars.registerHelper('formatDate', function(value) {
+    return moment(value, fbDateFormats).format("HH:mm DD/MM/YY");
+  });
+  
   Accounts.ui.config({
     requestPermissions: {
       facebook: ['user_events', 'friends_events']
@@ -21,11 +26,26 @@ if (Meteor.isClient) {
     Meteor.http.get(url, {timeout: 30000}, callback);
   }
 
+  function getEvents (dayOrNight) {
+    try {
+      var selectedMoment = moment.utc(Session.get("selectedDate"));
+      var date = selectedMoment.date();
+      var month = selectedMoment.month();
+      var year = selectedMoment.year();
+      return Session.get(dayOrNight).filter(function (event) {
+        var m = moment(event.start_time, fbDateFormats);
+        return m.year() === year && m.month() === month && m.date() === date;
+      });
+    } catch (e) {
+      return null;
+    }
+  }
+
   Template.dayEvents.events = function () {
-    return Session.get("dayEvents") || null;
+    return getEvents("dayEvents");
   };
   Template.nightEvents.events = function () {
-    return Session.get("nightEvents") || null;
+    return getEvents("nightEvents");
   };
   Meteor.autorun(function() {
     var userId = Meteor.userId();
@@ -48,21 +68,19 @@ if (Meteor.isClient) {
             });
             
             events.sort(function (a, b) {
-              return moment(a.start_time).valueOf() - moment(b.start_time).valueOf();
+              return moment(a.start_time, fbDateFormats).valueOf() - moment(b.start_time, fbDateFormats).valueOf();
             });
             
             var dayEvents = [];
             var nightEvents = [];
             events.forEach(function (event) {
-              var startTime = moment(event.start_time);
+              var startTime = moment(event.start_time, fbDateFormats);
               var startHour = startTime.hours();
               if (startHour > 6 && startHour < 18) {
                 dayEvents.push(event);
               } else {
                 nightEvents.push(event);
               }
-              
-              event.start_time = startTime.format("HH:mm DD/MM/YY");
             });
 
             Session.set("dayEvents", dayEvents);
@@ -81,7 +99,13 @@ if (Meteor.isClient) {
     $('#datepicker').datepicker({
       format: 'dd/mm/yyyy'
     });
-    $('#datepicker input').val(moment().format("DD/MM/YYYY"));
+    var currentMoment = moment();
+    $('#datepicker input').val(currentMoment.format("DD/MM/YYYY"));
+    Session.set("selectedDate", currentMoment.valueOf());
+    $('#datepicker').on('changeDate', function (ev) {
+      Session.set("selectedDate", ev.date.valueOf());
+      $(this).datepicker("hide");
+    });
   });
 }
 
