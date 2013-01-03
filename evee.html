@@ -116,54 +116,27 @@
 </body>
 
 <template name="dayEvents">
-  {{#ifIsNull events}}
-    <div class="row-fluid">
-      <div class="events-info-message">
-        <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
-      </div>
-    </div>
-  {{else}}
-    {{#if events}}
-      {{#each events}}
-        <div class="event-info">
-          <div class="event-picture">
-            <img src="{{picture.data.url}}" alt="{{name}}">
-          </div>
-          <div class="event-description">
-            <div class="event-name" title="{{name}}">
-              <h4><a href="https://www.facebook.com/events/{{id}}">{{name}}</a></h4>
-            </div>
-            <div class="event-row event-time">
-              <i class="icon-time"></i> {{formatDate start_time}}
-            </div>
-            <div class="event-row event-location" title="{{location}}">
-              <i class="icon-map-marker"></i> {{location}}
-            </div>
-            <div class="event-row event-ratio">
-              <i class="female"></i> 50%
-              <i class="male"></i> 50%
-            </div>
-          </div>
-        </div>
-      {{/each}}
-    {{else}}
-      <div class="events-info-message">
-        Nenhum evento nesta data :(
-      </div>
-    {{/if}}
-  {{/ifIsNull}}
+  {{#with dayContext}}
+    {{> fbEventsTemplate}}
+  {{/with}}
 </template>
 
 <template name="nightEvents">
-  {{#ifIsNull events}}
+  {{#with nightContext}}
+    {{> fbEventsTemplate}}
+  {{/with}}
+</template>
+
+<template name="fbEventsTemplate">
+  {{#ifIsNull fbEvents}}
     <div class="row-fluid">
       <div class="events-info-message">
         <i class="icon-spinner icon-spin icon-2x pull-left"></i> Carregando eventos...
       </div>
     </div>
   {{else}}
-    {{#if events}}
-      {{#each events}}
+    {{#if fbEvents}}
+      {{#each fbEvents}}
         <div class="event-info">
           <div class="event-picture">
             <img src="{{picture.data.url}}" alt="{{name}}">

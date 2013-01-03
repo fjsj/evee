@@ -41,12 +41,14 @@ if (Meteor.isClient) {
     }
   }
 
-  Template.dayEvents.events = function () {
-    return getEvents("dayEvents");
+  Template.dayEvents.dayContext = function () {
+    return {'fbEvents': getEvents("dayEvents")};
   };
-  Template.nightEvents.events = function () {
-    return getEvents("nightEvents");
+
+  Template.nightEvents.nightContext = function () {
+    return {'fbEvents': getEvents("nightEvents")};
   };
+
   Meteor.autorun(function() {
     var userId = Meteor.userId();
     if (Meteor.userId()) {
