@@ -306,7 +306,8 @@ footer a:hover {
     }
     .dayperiod {
         width: 50%;
-        float: left;
+        display: inline-block;
+        vertical-align: top;
     }
     .dayperiod .daycontent .event-info .event-description .event-name h4,
     .dayperiod .daycontent .event-info .event-description .event-location {
