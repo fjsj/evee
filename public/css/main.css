@@ -130,6 +130,7 @@ body {
 
 .row-steps-fluid {
     width: 100%;
+    background: url(../img/hexellence.png) repeat center center scroll;
 }
 
 .step-fluid {
@@ -208,7 +209,6 @@ time span {
 }
 
 .step-fluid .day-content {
-    background: url(../img/hexellence.png) repeat center center scroll;
     height: 100%;
 }
 

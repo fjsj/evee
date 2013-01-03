@@ -95,7 +95,6 @@ if (Meteor.isClient) {
     }
   });
   Meteor.startup(function () {
-    $('.gmap').mobileGmap();
     $('#datepicker').datepicker({
       format: 'dd/mm/yyyy'
     });
