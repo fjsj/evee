@@ -98,14 +98,16 @@ if (Meteor.isClient) {
   });
   Meteor.startup(function () {
     $('#datepicker').datepicker({
-      format: 'dd/mm/yyyy'
+      format: 'dd/mm/yyyy',
+      autoclose: true,
+      todayBtn: "linked",
+      todayHighlight: true
     });
     var currentMoment = moment();
     $('#datepicker input').val(currentMoment.format("DD/MM/YYYY"));
     Session.set("selectedDate", currentMoment.valueOf());
     $('#datepicker').on('changeDate', function (ev) {
       Session.set("selectedDate", ev.date.valueOf());
-      $(this).datepicker("hide");
     });
   });
 }
