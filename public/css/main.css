@@ -35,6 +35,7 @@ body {
 }
 
 .navbar .nav {
+    font-family: "Exo", "PT Sans", "Segoe UI", sans-serif;
 }
 
 .navbar .nav > li {
@@ -105,7 +106,7 @@ body {
 }
 
 .hero-unit h1 {
-    font-family: "Convergence", "Open Sans", "Segoe UI", sans-serif;
+    font-family: "Convergence", "PT Sans", "Segoe UI", sans-serif;
 }
 
 .hero-unit p:last-child {
@@ -118,13 +119,14 @@ body {
     width: 330px;
 }
 
-.row-days {
+.row-steps-fluid {
     display: table;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 }
-.dayperiod {
+
+.step-fluid {
     display: inline-block;
     width: 50%;
     vertical-align: top;
@@ -132,37 +134,66 @@ body {
     overflow: hidden;
 }
 
-.dayperiod .dayheader {
+.step-fluid .step-header, .step-header-full {
     background-color: white;
     padding-left: 12px;
 }
 
-.dayperiod .dayheader h3 {
+.step-fluid .step-header h3, .step-header-full h3 {
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-.day .dayheader {
+.step-header-full {
+    border-left: 6px #b51e62 solid;
+    border-bottom: 6px #a50e55 solid;
+    background-color: #e80971;
+    color: white;
+}
+
+.step1 .step-header {
+    border-left: 6px #b51324 solid;
+    border-bottom: 6px #a00012 solid;
+    background-color: #e20d2a;
+    color: white;
+}
+
+.step2 .step-header {
+    border-left: 6px #008763 solid;
+    border-bottom: 6px #007054 solid;
+    background-color: #009973;
+    color: white;
+}
+
+.day .step-header {
     border-left: 6px #b73700 solid;
     background-color: #ff5400;
     color: white;
 }
 
-.night .dayheader {
-    border-left: 6px #bf005f solid;
-    background-color: #ff007f;
+.night .step-header {
+    border-left: 6px #211f30 solid;
+    background-color: #373159;
     color: white;
 }
 
-.day .daycontent {
+.step1 .step-content {
+
+}
+
+.step2 .step-content {
+
+}
+
+.day .day-content {
     border-left: 6px #b73700 solid;
 }
 
-.night .daycontent {
-    border-left: 6px #bf005f solid;
+.night .day-content {
+    border-left: 6px #211f30 solid;
 }
 
-.daycontent .events-loading {
+.day-content .events-loading {
     padding: 1em;
 }
 
@@ -170,53 +201,54 @@ time span {
     font-family: 'pe-analogclock';
 }
 
-.dayperiod .daycontent {
+.step-fluid .day-content {
     background: url(../img/hexellence.png) repeat center center scroll;
     height: 100%;
 }
 
-.dayperiod .daycontent .event-info {
+.step-fluid .day-content .event-info {
     overflow: hidden;
     width: 100%;
     border-bottom: 1px #cecece solid;
 }
 
-.dayperiod .daycontent .event-info:last-child {
+.step-fluid .day-content .event-info:last-child {
     border-bottom: none;
 }
 
-.dayperiod .daycontent .event-info .event-picture {
+.step-fluid .day-content .event-info .event-picture {
     float: left;
     width: 75px;
     height: 75px;
     vertical-align: top;
 }
 
-.dayperiod .daycontent .event-info .event-picture img {
+.step-fluid .day-content .event-info .event-picture img {
     width: 75px;
     height: 75px;
 }
 
-.dayperiod .daycontent .event-info .event-description {
+.step-fluid .day-content .event-info .event-description {
+    font-family: "Exo", "Open Sans", "Segoe UI", sans-serif;
     margin-left: 80px;
     line-height: 16px;
 }
 
-.dayperiod .daycontent .event-info:last-child .event-description {
+.step-fluid .day-content .event-info:last-child .event-description {
     margin-bottom: 0px;
 }
 
-.dayperiod .daycontent .event-info .event-description i[class^="icon-"],
-.dayperiod .daycontent .event-info .event-description i[class*=" icon-"] {
+.step-fluid .day-content .event-info .event-description i[class^="icon-"],
+.step-fluid .day-content .event-info .event-description i[class*=" icon-"] {
     display: inline-block;
     width: 1em;
     text-align: center;
 }
 
-.dayperiod .daycontent .event-info .event-description .event-name {
+.step-fluid .day-content .event-info .event-description .event-name {
 }
 
-.dayperiod .daycontent .event-info .event-description .event-name h4 {
+.step-fluid .day-content .event-info .event-description .event-name h4 {
     font-size: 16px;
     font-weight: normal;
     margin-top: 2px;
@@ -228,11 +260,11 @@ time span {
     width: 100%;
 }
 
-.dayperiod .daycontent .event-info .event-description .event-time,
-.dayperiod .daycontent .event-info .event-description .event-location {
+.step-fluid .day-content .event-info .event-description .event-time,
+.step-fluid .day-content .event-info .event-description .event-location {
 }
 
-.dayperiod .daycontent .event-info .event-description .event-ratio {
+.step-fluid .day-content .event-info .event-description .event-ratio {
 }
 
 .male, .female {
@@ -252,14 +284,14 @@ time span {
     background-image: url("../img/female.png");
 }
 
-.dayperiod .daycontent .event-info .event-description .event-attendees {
+.step-fluid .day-content .event-info .event-description .event-attendees {
     display: inline-block;
     vertical-align: top;
     height: 35px;
     overflow: hidden;
 }
 
-.dayperiod .daycontent .event-info .event-description .event-attendees img {
+.step-fluid .day-content .event-info .event-description .event-attendees img {
     height: 35px;
     width: 35px;
 }
@@ -315,8 +347,8 @@ footer a:hover {
     .hero-background {
         background-position: 0px -136px;
     }
-    .dayperiod .daycontent .event-info .event-description .event-name h4,
-    .dayperiod .daycontent .event-info .event-description .event-location {
+    .step-fluid .day-content .event-info .event-description .event-name h4,
+    .step-fluid .day-content .event-info .event-description .event-location {
         overflow: hidden;
         text-overflow: ellipsis;
         -o-text-overflow: ellipsis;
@@ -341,10 +373,10 @@ footer a:hover {
     .hero-unit {
         padding-top: 20px;
     }
-    .row-days {
+    .row-steps-fluid {
         display: block;
     }
-    .dayperiod {
+    .step-fluid {
         display: block;
         width: 100%;
         height: 100%;
@@ -363,10 +395,10 @@ footer a:hover {
     .hero-unit {
         padding-top: 20px;
     }
-    .row-days {
+    .row-steps-fluid {
         display: block;
     }
-    .dayperiod {
+    .step-fluid {
         display: block;
         width: 100%;
         height: 100%;
