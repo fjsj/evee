@@ -102,12 +102,19 @@ if (Meteor.isClient) {
       autoclose: true,
       todayBtn: "linked",
       todayHighlight: true
+    }).on('show', function (ev) {
+      $('html, body').animate({
+        scrollTop: $(this).offset().top
+      }, 500);
     });
     var currentMoment = moment();
     $('#datepicker input').val(currentMoment.format("DD/MM/YYYY"));
     Session.set("selectedDate", currentMoment.valueOf());
     $('#datepicker').on('changeDate', function (ev) {
       Session.set("selectedDate", ev.date.valueOf());
+      $('html, body').animate({
+        scrollTop: $(".step3").offset().top
+      }, 500);
     });
   });
 }

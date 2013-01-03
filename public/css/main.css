@@ -1,7 +1,6 @@
 body {
     font-family: "PT Sans", "Segoe UI", "Verdana", "Lucida Grande", sans-serif;
     background: url(../img/hexabump.png) repeat center center scroll;
-    padding-bottom: 40px;
 }
 
 .container-background {
@@ -12,14 +11,10 @@ body {
     width: 940px;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 0px;
 }
 
 .navbar-inner {
-    border: none;
-}
-
-.navbar-fixed-top {
-    margin-bottom: 0px;
 }
 
 .navbar-inverse .navbar-inner {
@@ -28,6 +23,13 @@ body {
 
 .navbar .navbar-inner {
     min-height: 50px;
+    border: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    filter: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none
 }
 
 .navbar-inner .container {
@@ -59,7 +61,8 @@ body {
     color: white;
     font-size: 36px;
     line-height: 32px;
-    padding-left: 40px;
+    padding-left: 20px;
+    padding-bottom: 15px;
     text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -91,9 +94,12 @@ body {
 
 .hero-unit {
     background: none;
-    padding: 90px 60px 40px 60px;
+    padding: 30px 60px 50px 60px;
     margin-bottom: 0px;
     color: white;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
 
 .container-shadow {
@@ -184,12 +190,8 @@ body {
     color: white;
 }
 
-.step1 .step-content {
-
-}
-
-.step2 .step-content {
-
+.step1 .step-content, .step2 .step-content {
+    padding: 1em;
 }
 
 .day .day-content {
