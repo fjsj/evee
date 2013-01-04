@@ -61,20 +61,22 @@ if (Meteor.isClient) {
     }
   }
 
-  Template.dayEvents.dayContext = function () {
+  Template.todayEvents.todayContext = function () {
     var todayKey = Session.get("selectedDate");
     if (todayKey) {
-      return {'fbEvents': getEvents(todayKey)};
+      var today = moment.utc(todayKey, "YYYY-MM-DD");
+      return {'currentDate': today.format("DD/MM/YYYY"), 'fbEvents': getEvents(todayKey)};
     } else {
       return null;
     }
   };
 
-  Template.nightEvents.nightContext = function () {
+  Template.tomorrowEvents.tomorrowContext = function () {
     var todayKey = Session.get("selectedDate");
     if (todayKey) {
-      var tomorrowKey = moment.utc(todayKey, "YYYY-MM-DD").add("days", 1).format("YYYY-MM-DD");
-      return {'fbEvents': getEvents(tomorrowKey)};
+      var tomorrow = moment.utc(todayKey, "YYYY-MM-DD").add("days", 1);
+      var tomorrowKey = tomorrow.format("YYYY-MM-DD");
+      return {'currentDate': tomorrow.format("DD/MM/YYYY"), 'fbEvents': getEvents(tomorrowKey)};
     } else {
       return null;
     }

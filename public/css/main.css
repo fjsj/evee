@@ -178,27 +178,31 @@ body {
     color: white;
 }
 
-.day .step-header {
+.today .step-header {
     border-left: 6px #b73700 solid;
     background-color: #ff5400;
     color: white;
 }
 
-.night .step-header {
+.tomorrow .step-header {
     border-left: 6px #211f30 solid;
     background-color: #373159;
     color: white;
+}
+
+.step-header i {
+    margin-top: 7px;
 }
 
 .step1 .step-content, .step2 .step-content {
     padding: 1em;
 }
 
-.day .day-content {
+.today .day-content {
     border-left: 6px #b73700 solid;
 }
 
-.night .day-content {
+.tomorrow .day-content {
     border-left: 6px #211f30 solid;
 }
 
