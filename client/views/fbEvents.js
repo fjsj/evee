@@ -1,10 +1,3 @@
-Accounts.ui.config({
-  requestPermissions: {
-    facebook: ['user_events', 'friends_events']
-  },
-  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
-});
-
 function getEvents (dateKey) {
   try {
     return Session.get("datesAndEvents")[dateKey];

@@ -1,3 +1,10 @@
+Accounts.ui.config({
+  requestPermissions: {
+    facebook: ['user_events', 'friends_events']
+  },
+  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
+});
+
 var facebook = (function () {
   var fetchEvents = function (accessToken, callback) {
     var timestamp = moment().unix();
