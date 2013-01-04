@@ -1,3 +1,10 @@
+Accounts.ui.config({
+  requestPermissions: {
+    facebook: ['user_events', 'friends_events']
+  },
+  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
+});
+
 function getEvents (dateKey) {
   try {
     return Session.get("datesAndEvents")[dateKey];
@@ -7,21 +14,19 @@ function getEvents (dateKey) {
 }
 
 Template.todayEvents.todayContext = function () {
-  var todayKey = Session.get("selectedDate");
+  var todayKey = selectedDate.getAsKey();
   if (todayKey) {
-    var today = moment.utc(todayKey, "YYYY-MM-DD");
-    return {'currentDate': today.format("DD/MM/YYYY"), 'fbEvents': getEvents(todayKey)};
+    return {'currentDate': selectedDate.getFormatted(), 'fbEvents': getEvents(todayKey)};
   } else {
     return null;
   }
 };
 
 Template.tomorrowEvents.tomorrowContext = function () {
-  var todayKey = Session.get("selectedDate");
+  var todayKey = selectedDate.getAsKey();
   if (todayKey) {
-    var tomorrow = moment.utc(todayKey, "YYYY-MM-DD").add("days", 1);
-    var tomorrowKey = tomorrow.format("YYYY-MM-DD");
-    return {'currentDate': tomorrow.format("DD/MM/YYYY"), 'fbEvents': getEvents(tomorrowKey)};
+    var tomorrowKey = selectedDate.getTomorrowAsKey();
+    return {'currentDate': selectedDate.getTomorrowFormatted(), 'fbEvents': getEvents(tomorrowKey)};
   } else {
     return null;
   }

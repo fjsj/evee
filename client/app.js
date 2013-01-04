@@ -27,26 +27,12 @@ if (Meteor.isClient) {
       scrollTo(destinationSelector);
     }
   }
-  
-  Accounts.ui.config({
-    requestPermissions: {
-      facebook: ['user_events', 'friends_events']
-    },
-    passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
-  });
-
-  function fetchEvents (accessToken, callback) {
-    var timestamp = moment().unix();
-    var url = "https://graph.facebook.com/me?fields=friends.fields(events.since(" + timestamp + ").limit(25).fields(id,description,start_time,end_time,location,name,venue,picture.width(100).height(100).type(square)))";
-    url += "&access_token=" + accessToken;
-    Meteor.http.get(url, {timeout: 30000}, callback);
-  }
 
   Meteor.autorun(function() {
     var userId = Meteor.userId();
     if (Meteor.userId()) {
       Meteor.call("getAccessToken", function (error, accessToken) {
-        fetchEvents(accessToken, function (error, result) {
+        facebook.fetchEvents(accessToken, function (error, result) {
           if (result.statusCode == 200) {
             var json = JSON.parse(result.content);
             var eventsIds = {};
@@ -81,24 +67,5 @@ if (Meteor.isClient) {
     } else {
       
     }
-  });
-  Meteor.startup(function () {
-    $('#datepicker').datepicker({
-      format: 'dd/mm/yyyy',
-      autoclose: true,
-      todayBtn: "linked",
-      todayHighlight: true
-    }).on('show', function (ev) {
-      scrollToIfHidden(".datepicker-dropdown", true, this);
-    });
-    var currentMoment = moment();
-    $('#datepicker input').val(currentMoment.format("DD/MM/YYYY"));
-    Session.set("selectedDate", currentMoment.format("YYYY-MM-DD"));
-    $('#datepicker').on('changeDate', function (ev) {
-      Session.set("selectedDate", moment.utc(ev.date.valueOf()).format("YYYY-MM-DD"));
-    });
-    $('#datepicker input').click(function (ev) {
-      $('#datepicker').datepicker("show");
-    });
   });
 }
