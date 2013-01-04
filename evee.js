@@ -26,27 +26,31 @@ if (Meteor.isClient) {
     Meteor.http.get(url, {timeout: 30000}, callback);
   }
 
-  function getEvents (dayOrNight) {
+  function getEvents (dateKey) {
     try {
-      var selectedMoment = moment.utc(Session.get("selectedDate"));
-      var date = selectedMoment.date();
-      var month = selectedMoment.month();
-      var year = selectedMoment.year();
-      return Session.get(dayOrNight).filter(function (event) {
-        var m = moment(event.start_time, fbDateFormats);
-        return m.year() === year && m.month() === month && m.date() === date;
-      });
+      return Session.get("datesAndEvents")[dateKey];
     } catch (e) {
       return null;
     }
   }
 
   Template.dayEvents.dayContext = function () {
-    return {'fbEvents': getEvents("dayEvents")};
+    var todayKey = Session.get("selectedDate");
+    if (todayKey) {
+      return {'fbEvents': getEvents(todayKey)};
+    } else {
+      return null;
+    }
   };
 
   Template.nightEvents.nightContext = function () {
-    return {'fbEvents': getEvents("nightEvents")};
+    var todayKey = Session.get("selectedDate");
+    if (todayKey) {
+      var tomorrowKey = moment.utc(todayKey, "YYYY-MM-DD").add("days", 1).format("YYYY-MM-DD");
+      return {'fbEvents': getEvents(tomorrowKey)};
+    } else {
+      return null;
+    }
   };
 
   Meteor.autorun(function() {
@@ -73,20 +77,13 @@ if (Meteor.isClient) {
               return moment(a.start_time, fbDateFormats).valueOf() - moment(b.start_time, fbDateFormats).valueOf();
             });
             
-            var dayEvents = [];
-            var nightEvents = [];
+            var datesAndEvents = {};
             events.forEach(function (event) {
-              var startTime = moment(event.start_time, fbDateFormats);
-              var startHour = startTime.hours();
-              if (startHour > 6 && startHour < 18) {
-                dayEvents.push(event);
-              } else {
-                nightEvents.push(event);
-              }
+              var dateKey = moment(event.start_time, fbDateFormats).format("YYYY-MM-DD");
+              datesAndEvents[dateKey] = datesAndEvents[dateKey] || [];
+              datesAndEvents[dateKey].push(event);
             });
-
-            Session.set("dayEvents", dayEvents);
-            Session.set("nightEvents", nightEvents);
+            Session.set("datesAndEvents", datesAndEvents);
           } else {
             
           }
@@ -109,9 +106,9 @@ if (Meteor.isClient) {
     });
     var currentMoment = moment();
     $('#datepicker input').val(currentMoment.format("DD/MM/YYYY"));
-    Session.set("selectedDate", currentMoment.valueOf());
+    Session.set("selectedDate", currentMoment.format("YYYY-MM-DD"));
     $('#datepicker').on('changeDate', function (ev) {
-      Session.set("selectedDate", ev.date.valueOf());
+      Session.set("selectedDate", moment.utc(ev.date.valueOf()).format("YYYY-MM-DD"));
       $('html, body').animate({
         scrollTop: $(".step3").offset().top
       }, 500);
