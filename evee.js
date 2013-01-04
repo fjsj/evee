@@ -11,6 +11,33 @@ if (Meteor.isClient) {
   Handlebars.registerHelper('formatDate', function(value) {
     return moment(value, fbDateFormats).format("HH:mm DD/MM/YY");
   });
+
+  // http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+  function isScrolledIntoView (selector, fully) {
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(selector).offset().top;
+    var elemBottom = elemTop + $(selector).height();
+
+    var isVisible = (elemBottom <= docViewBottom) && (elemTop >= docViewTop);
+    if (fully) {
+      return isVisible = isVisible && (elemBottom >= docViewTop) && (elemTop <= docViewBottom);
+    }
+    return isVisible;
+  }
+
+  function scrollTo (selector) {
+    $('html, body').animate({
+      scrollTop: $(selector).offset().top
+    }, 500);
+  }
+
+  function scrollToIfHidden (selector, partially, destinationSelector) {
+    if (!isScrolledIntoView(selector, partially)) {
+      scrollTo(destinationSelector);
+    }
+  }
   
   Accounts.ui.config({
     requestPermissions: {
@@ -100,18 +127,16 @@ if (Meteor.isClient) {
       todayBtn: "linked",
       todayHighlight: true
     }).on('show', function (ev) {
-      $('html, body').animate({
-        scrollTop: $(this).offset().top
-      }, 500);
+      scrollToIfHidden(".datepicker-dropdown", true, this);
     });
     var currentMoment = moment();
     $('#datepicker input').val(currentMoment.format("DD/MM/YYYY"));
     Session.set("selectedDate", currentMoment.format("YYYY-MM-DD"));
     $('#datepicker').on('changeDate', function (ev) {
       Session.set("selectedDate", moment.utc(ev.date.valueOf()).format("YYYY-MM-DD"));
-      $('html, body').animate({
-        scrollTop: $(".step3").offset().top
-      }, 500);
+    });
+    $('#datepicker input').click(function (ev) {
+      $('#datepicker').datepicker("show");
     });
   });
 }
