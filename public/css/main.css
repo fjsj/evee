@@ -1,6 +1,6 @@
 body {
     font-family: "PT Sans", "Segoe UI", "Verdana", "Lucida Grande", sans-serif;
-    background: url(../img/hexabump.png) repeat center center scroll;
+    background: url(/img/hexabump.png) repeat center center scroll;
 }
 
 .container-background {
@@ -83,13 +83,13 @@ body {
 }
 
 .hero-background {
-    background: url(../img/recife3.jpg) no-repeat center center scroll;
+    background: url(/img/recife3.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/back.jpg', sizingMethod='scale');
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/back.jpg', sizingMethod='scale')";
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/back.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/back.jpg', sizingMethod='scale')";
 }
 
 .hero-unit {
@@ -136,7 +136,7 @@ body {
 
 .row-steps-fluid {
     width: 100%;
-    background: url(../img/hexellence.png) repeat center center scroll;
+    background: url(/img/hexellence.png) repeat center center scroll;
 }
 
 .step-fluid {
@@ -288,12 +288,12 @@ time span {
 }
 
 .male {
-    background-image: url("../img/male.png");
+    background-image: url("/img/male.png");
     margin-left: 4px;
 }
 
 .female {
-    background-image: url("../img/female.png");
+    background-image: url("/img/female.png");
 }
 
 .step-fluid .day-content .event-info .event-description .event-attendees {

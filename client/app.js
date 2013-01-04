@@ -1,17 +1,6 @@
 if (Meteor.isClient) {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
 
-  Handlebars.registerHelper('ifIsNull', function(value, options) {
-    if (value === null) {
-      return options.fn(this);
-    } else {
-      return options.inverse(this);
-    }
-  });
-  Handlebars.registerHelper('formatDate', function(value) {
-    return moment(value, fbDateFormats).format("HH:mm DD/MM/YY");
-  });
-
   // http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
   function isScrolledIntoView (selector, fully) {
     var docViewTop = $(window).scrollTop();
@@ -52,35 +41,6 @@ if (Meteor.isClient) {
     url += "&access_token=" + accessToken;
     Meteor.http.get(url, {timeout: 30000}, callback);
   }
-
-  function getEvents (dateKey) {
-    try {
-      return Session.get("datesAndEvents")[dateKey];
-    } catch (e) {
-      return null;
-    }
-  }
-
-  Template.todayEvents.todayContext = function () {
-    var todayKey = Session.get("selectedDate");
-    if (todayKey) {
-      var today = moment.utc(todayKey, "YYYY-MM-DD");
-      return {'currentDate': today.format("DD/MM/YYYY"), 'fbEvents': getEvents(todayKey)};
-    } else {
-      return null;
-    }
-  };
-
-  Template.tomorrowEvents.tomorrowContext = function () {
-    var todayKey = Session.get("selectedDate");
-    if (todayKey) {
-      var tomorrow = moment.utc(todayKey, "YYYY-MM-DD").add("days", 1);
-      var tomorrowKey = tomorrow.format("YYYY-MM-DD");
-      return {'currentDate': tomorrow.format("DD/MM/YYYY"), 'fbEvents': getEvents(tomorrowKey)};
-    } else {
-      return null;
-    }
-  };
 
   Meteor.autorun(function() {
     var userId = Meteor.userId();
@@ -140,19 +100,5 @@ if (Meteor.isClient) {
     $('#datepicker input').click(function (ev) {
       $('#datepicker').datepicker("show");
     });
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    Meteor.methods({
-      getAccessToken : function () {
-        try {
-          return Meteor.user().services.facebook.accessToken;
-        } catch (e) {
-          return null;
-        }
-      }
-    }); 
   });
 }
