@@ -1,33 +1,6 @@
 if (Meteor.isClient) {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
 
-  // http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
-  function isScrolledIntoView (selector, fully) {
-    var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
-
-    var elemTop = $(selector).offset().top;
-    var elemBottom = elemTop + $(selector).height();
-
-    var isVisible = (elemBottom <= docViewBottom) && (elemTop >= docViewTop);
-    if (fully) {
-      return isVisible = isVisible && (elemBottom >= docViewTop) && (elemTop <= docViewBottom);
-    }
-    return isVisible;
-  }
-
-  function scrollTo (selector) {
-    $('html, body').animate({
-      scrollTop: $(selector).offset().top
-    }, 500);
-  }
-
-  function scrollToIfHidden (selector, partially, destinationSelector) {
-    if (!isScrolledIntoView(selector, partially)) {
-      scrollTo(destinationSelector);
-    }
-  }
-
   Meteor.autorun(function() {
     var userId = Meteor.userId();
     if (Meteor.userId()) {
@@ -54,7 +27,7 @@ if (Meteor.isClient) {
             
             var datesAndEvents = {};
             events.forEach(function (event) {
-              var dateKey = moment(event.start_time, fbDateFormats).format("YYYY-MM-DD");
+              var dateKey = moment(event.start_time, fbDateFormats).format(selectedDate.keyFormat);
               datesAndEvents[dateKey] = datesAndEvents[dateKey] || [];
               datesAndEvents[dateKey].push(event);
             });

@@ -31,6 +31,7 @@ var selectedDate = (function () {
   };
  
   return {
+    keyFormat: keyFormat,
     getAsKey: getAsKey,
     getFormatted: getFormatted,
     getTomorrowAsKey: getTomorrowAsKey,
