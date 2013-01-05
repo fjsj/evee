@@ -12,12 +12,12 @@ var i18n = (function () {
   var messagesKeys = _.keys(messagesEN_PT);
   var messagesEN_EN = _.object(messagesKeys, messagesKeys);
   var languages = {
-    "EN": messagesEN_EN,
-    "PT": messagesEN_PT
+    "en": messagesEN_EN,
+    "pt": messagesEN_PT
   };
 
   var translate = function (message) {
-    var language = Session.get("language", language) || "EN";
+    var language = Session.get("language", language) || "en";
     return languages[language][message];
   };
 
