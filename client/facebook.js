@@ -22,8 +22,6 @@ var facebook = (function () {
       sortByDate(events);
       var datesAndEvents = eventsToDatesAndEventsMap(events);
       storeDatesAndEvents(datesAndEvents);
-    } else {
-      alert("Erro ao importar eventos do Facebook");
     }
   };
 
