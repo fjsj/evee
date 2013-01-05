@@ -25,6 +25,10 @@ function scrollToIfHidden (selector, partially, destinationSelector) {
   }
 }
 
+Template.datepicker.created = function () {
+  selectedDate.setAsMoment(moment());
+};
+
 Template.datepicker.rendered = function () {
   var $datepicker = $('#datepicker');
   var $datepickerInput = $('#datepicker input');
@@ -42,9 +46,8 @@ Template.datepicker.rendered = function () {
     $datepicker.datepicker("show");
   });
 
-  selectedDate.setAsMoment(moment());
   $datepickerInput.val(selectedDate.getFormatted());
   $datepicker.on('changeDate', function (ev) {
     selectedDate.setAsMoment(moment.utc(ev.date.valueOf()));
   });
-}
+};
