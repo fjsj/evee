@@ -25,10 +25,6 @@ function scrollToIfHidden (selector, partially, destinationSelector) {
   }
 }
 
-Template.datepicker.created = function () {
-  selectedDate.setAsMoment(moment());
-};
-
 Template.datepicker.rendered = function () {
   var $datepicker = $('#datepicker');
   var $datepickerInput = $('#datepicker input');

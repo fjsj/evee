@@ -30,6 +30,7 @@ var selectedDate = (function () {
   var setAsMoment = function (asMoment) {
     Session.set("selectedDate", asMoment.format(keyFormat));
   };
+  setAsMoment(moment());
  
   return {
     keyFormat: keyFormat,
