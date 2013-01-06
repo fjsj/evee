@@ -1,0 +1,73 @@
+.event-detailed-info .hero-unit {
+    padding: 0px;
+    overflow: hidden;
+}
+
+.event-detailed-info .event-picture {
+    float: left;
+    width: 160px;
+    height: 160px;
+    vertical-align: top;
+}
+
+.event-detailed-info .event-title {
+    margin-left: 175px;
+}
+
+.event-detailed-info .place-date-time .step-header {
+    border-left: 6px #b73700 solid;
+    background-color: #ff5400;
+    color: white;
+}
+
+.event-detailed-info .place-date-time .event-content {
+    border-left: 6px #b73700 solid;
+    padding: 1em;
+    font-size: 18px;
+}
+
+.event-detailed-info .event-attendees .step-header {
+    border-left: 6px #211f30 solid;
+    background-color: #373159;
+    color: white;
+}
+
+.event-detailed-info .event-attendees .event-content {
+    border-left: 6px #211f30 solid;
+    padding: 1em;
+    font-size: 18px;
+}
+
+.event-detailed-info .event-data {
+    margin-bottom: 6px;
+}
+
+.event-detailed-info .event-data i {
+    width: 1em;
+    text-align: center;
+}
+
+.event-detailed-info .event-data .event-data-text {
+    line-height: 34px;
+}
+
+.event-detailed-info .event-ratio {
+    margin-top: 10px;
+}
+
+.event-detailed-info .event-data .male, .event-detailed-info .event-data .female {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+}
+
+.male {
+    background-image: url("/img/male32.png");
+    margin-left: 10px;
+}
+
+.female {
+    background-image: url("/img/female32.png");
+}

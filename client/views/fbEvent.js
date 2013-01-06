@@ -1,0 +1,3 @@
+Template.fbEvent.rendered = function () {
+
+};

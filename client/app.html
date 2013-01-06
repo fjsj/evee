@@ -14,6 +14,7 @@
   <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">-->
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+  <link href="css/event.css" rel="stylesheet">
   
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -61,37 +62,43 @@
   </div>
 
   <div class="container container-background">
-    <div class="hero-background">
-      <div class="hero-unit container-shadow">
-        <h1>{{trans "An easy navigation through Facebook events"}}</h1>
-        <h2>{{trans "Sign in and see all Facebook events you and your friends were invited. An easy and quick way to get social information about events relevant for you."}}</h2>
-      </div>
-    </div>
-
-    <div class="row-steps-fluid">
-      <div class="step-fluid step1">
-        <div class="step-header"><h3>{{trans "Step 1: sign in"}}</h3></div>
-        <div class="step-content">
-          {{loginButtons}}
-        </div>
-      </div><div class="step-fluid step2">
-        <div class="step-header"><h3>{{trans "Step 2: choose a date"}}</h3></div>
-        <div class="step-content">
-          {{> datepicker}}
+    {{#if selectedEvent}}
+      {{#with selectedEvent}}
+        {{> fbEvent}}
+      {{/with}}
+    {{else}}
+      <div class="hero-background">
+        <div class="hero-unit container-shadow">
+          <h1>{{trans "An easy navigation through Facebook events"}}</h1>
+          <h2>{{trans "Sign in and see all Facebook events you and your friends were invited. An easy and quick way to get social information about events relevant for you."}}</h2>
         </div>
       </div>
-    </div>
 
-    <div class="row-steps-fluid">
-      <div class="step-header-full step3">
-        <h3>{{trans "Step 3: check the events"}}</h3>
+      <div class="row-steps-fluid">
+        <div class="step-fluid step1">
+          <div class="step-header"><h3>{{trans "Step 1: sign in"}}</h3></div>
+          <div class="step-content">
+            {{loginButtons}}
+          </div>
+        </div><div class="step-fluid step2">
+          <div class="step-header"><h3>{{trans "Step 2: choose a date"}}</h3></div>
+          <div class="step-content">
+            {{> datepicker}}
+          </div>
+        </div>
       </div>
-      <div class="step-fluid today">
-        {{> todayEvents}}
-      </div><div class="step-fluid tomorrow">
-        {{> tomorrowEvents}}
+
+      <div class="row-steps-fluid">
+        <div class="step-header-full step3">
+          <h3>{{trans "Step 3: check the events"}}</h3>
+        </div>
+        <div class="step-fluid today">
+          {{> todayEvents}}
+        </div><div class="step-fluid tomorrow">
+          {{> tomorrowEvents}}
+        </div>
       </div>
-    </div>
+    {{/if}}
 
     <footer>
       <p>&copy; <a href="http://github.com/fjsj">fjsj</a> 2013</p>

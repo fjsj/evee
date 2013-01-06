@@ -1,0 +1,55 @@
+<template name="fbEvent">
+  <div class="event-detailed-info">
+    <div class="hero-background">
+      <div class="hero-unit container-shadow">
+        <div class="event-picture">
+          <img src="{{picture.data.url}}" alt="{{name}}">
+        </div><div class="event-title">
+          <h1>{{name}}</h1>
+          <h2>{{description}}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-steps-fluid">
+      <div class="step-header-full step3">
+        <h3>Step 4: event information</h3>
+      </div>
+      <div class="step-fluid place-date-time">
+        <div class="step-header"><h3><i class="icon-tags pull-left"></i> Local, data, hora</h3></div>
+        <div class="event-content">
+          <div class="event-data event-time">
+            <i class="icon-time icon-2x pull-left"></i> <span class="event-data-text">{{formatDate start_time}}</span>
+          </div>
+          <div class="event-data event-location" title="{{location}}">
+            <i class="icon-map-marker icon-2x pull-left"></i> <span class="event-data-text">{{location}}</span>
+          </div>
+          <div class="event-data facebook-link" title="{{name}}">
+            <i class="icon-facebook-sign icon-2x pull-left"></i> <span class="event-data-text">ver no Facebook</a></span>
+          </div>
+          <div class="event-data event-ratio">
+            <i class="female"></i> 50%
+            <i class="male"></i> 50%
+          </div>
+        </div>
+      </div><div class="step-fluid event-attendees">
+        <div class="step-header"><h3><i class="icon-group pull-left"></i> Quem vai</h3></div>
+        <div class="event-content">
+          <div class="event-data event-time">
+            <i class="icon-time icon-2x pull-left"></i> <span class="event-data-text">{{formatDate start_time}}</span>
+          </div>
+          <div class="event-data event-location" title="{{location}}">
+            <i class="icon-map-marker icon-2x pull-left"></i> <span class="event-data-text">{{location}}</span>
+          </div>
+          <div class="event-data facebook-link" title="{{name}}">
+            <i class="icon-facebook-sign icon-2x pull-left"></i> <span class="event-data-text">ver no Facebook</a></span>
+          </div>
+          <div class="event-data event-ratio">
+            <i class="female"></i> 50%
+            <i class="male"></i> 50%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

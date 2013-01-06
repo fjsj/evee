@@ -1,16 +1,16 @@
 <template name="todayEvents">
   {{#with todayContext}}
-    {{> fbEventsTemplate}}
+    {{> fbEventList}}
   {{/with}}
 </template>
 
 <template name="tomorrowEvents">
   {{#with tomorrowContext}}
-    {{> fbEventsTemplate}}
+    {{> fbEventList}}
   {{/with}}
 </template>
 
-<template name="fbEventsTemplate">
+<template name="fbEventList">
   <div class="step-header"><h3><i class="icon-calendar pull-left"></i> {{currentDate}}</h3></div>
   <div class="day-content">
     {{#if currentUser}}
