@@ -6,10 +6,15 @@ var selectedEvent = (function () {
   var set = function (event) {
     Session.set("selectedEvent", event);
   };
+
+  var clear = function () {
+    Session.set("selectedEvent", null);
+  };
   
   return {
     get: get,
-    set: set
+    set: set,
+    clear: clear
   };
 })();
 

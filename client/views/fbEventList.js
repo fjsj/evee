@@ -18,10 +18,13 @@ Template.tomorrowEvents.tomorrowContext = function () {
 };
 
 var fbEventListEvents = {
-  "click .event-info": function (ev) {
+  "click .event-info .event-picture": function (ev) {
+    selectedEvent.set(this);
+  },
+  "click .event-info .event-name": function (ev) {
     selectedEvent.set(this);
   }
 }
 
-Template.todayEvents.events = fbEventListEvents;
-Template.tomorrowEvents.events = fbEventListEvents;
+Template.todayEvents.events(fbEventListEvents);
+Template.tomorrowEvents.events(fbEventListEvents);
