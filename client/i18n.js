@@ -7,7 +7,12 @@ var i18n = (function () {
     "Step 3: check the events": "Passo 3: confira os eventos",
     "Loading events...": "Carregando eventos...",
     "No events found at this date :(": "Nenhum evento nesta data :(",
-    "Sign in with your Facebook to see events": "Entre com seu Facebook para ver eventos"
+    "Sign in with your Facebook to see events": "Entre com seu Facebook para ver eventos",
+    "back to home": "voltar para home",
+    "Step 4: event information": "Passo 4: informações sobre o evento",
+    "Place, date and time": "Local, data, hora",
+    "view on Facebook": "ver no Facebook",
+    "Attending": "Quem vai"
   };
   var messagesKeys = _.keys(messagesEN_PT);
   var messagesEN_EN = _.object(messagesKeys, messagesKeys);

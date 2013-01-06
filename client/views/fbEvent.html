@@ -13,10 +13,10 @@
 
     <div class="row-steps-fluid">
       <div class="step-header-full step3">
-        <h3>Step 4: event information</h3>
+        <h3>{{trans "Step 4: event information"}}</h3>
       </div>
       <div class="step-fluid place-date-time">
-        <div class="step-header"><h3><i class="icon-tags pull-left"></i> Local, data, hora</h3></div>
+        <div class="step-header"><h3><i class="icon-tags pull-left"></i> {{trans "Place, date and time"}}</h3></div>
         <div class="event-content">
           <div class="event-data event-time">
             <i class="icon-time icon-2x pull-left"></i> <span class="event-data-text">{{formatDate start_time}}</span>
@@ -25,7 +25,7 @@
             <i class="icon-map-marker icon-2x pull-left"></i> <span class="event-data-text">{{location}}</span>
           </div>
           <div class="event-data facebook-link" title="{{name}}">
-            <i class="icon-facebook-sign icon-2x pull-left"></i> <a href="https://www.facebook.com/events/{{id}}"><span class="event-data-text">ver no Facebook</a></span>
+            <i class="icon-facebook-sign icon-2x pull-left"></i> <a href="https://www.facebook.com/events/{{id}}"><span class="event-data-text">{{trans "view on Facebook"}}</a></span>
           </div>
           <div class="event-data event-ratio">
             <i class="female"></i> {{femaleRatio maleRatio}}%
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div><div class="step-fluid event-attendees">
-        <div class="step-header"><h3><i class="icon-group pull-left"></i> Quem vai</h3></div>
+        <div class="step-header"><h3><i class="icon-group pull-left"></i> {{trans "Attending"}}</h3></div>
         <div class="event-content">
           {{#each attendees}}
             <div class="event-attendee">
