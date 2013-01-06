@@ -34,7 +34,8 @@ Template.datepicker.rendered = function () {
   var $datepickerInput = $('#datepicker input');
   
   $datepicker.datepicker({
-    format: "dd/mm/yyyy",
+    format: i18n.getDatepickerFormat(),
+    language: i18n.getLanguage(),
     autoclose: true,
     todayBtn: "linked",
     todayHighlight: true

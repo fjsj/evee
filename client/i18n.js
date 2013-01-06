@@ -15,18 +15,43 @@ var i18n = (function () {
     "en": messagesEN_EN,
     "pt": messagesEN_PT
   };
+  var dateFormats = {
+    "en": "MM/DD/YYYY",
+    "pt": "DD/MM/YYYY"
+  };
+  var datepickerFormats = {
+    "en": "mm/dd/yyyy",
+    "pt": "dd/mm/yyyy"
+  };
 
   var translate = function (message) {
-    var language = Session.get("language", language) || "en";
+    var language = getLanguage();
     return languages[language][message];
+  };
+
+  var getDateFormat = function () {
+    var language = getLanguage();
+    return dateFormats[language];
+  };
+
+  var getDatepickerFormat = function () {
+    var language = getLanguage();
+    return datepickerFormats[language];
+  };
+
+  var getLanguage = function (language) {
+    return Session.get("language") || "en";
   };
 
   var setLanguage = function (language) {
     return Session.set("language", language);
-  }
+  };
 
   return {
     translate: translate,
+    getDateFormat: getDateFormat,
+    getDatepickerFormat: getDatepickerFormat,
+    getLanguage: getLanguage,
     setLanguage: setLanguage
   };
 })();

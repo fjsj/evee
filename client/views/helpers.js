@@ -7,7 +7,8 @@ Handlebars.registerHelper('ifIsNull', function (value, options) {
 });
 
 Handlebars.registerHelper('formatDate', function (value) {
-  return moment(value, facebook.fbDateFormats).format("HH:mm DD/MM/YY");
+  var localFormat = i18n.getDateFormat();
+  return moment(value, facebook.fbDateFormats).format("HH:mm " + localFormat);
 });
 
 Handlebars.registerHelper('trans', function (value) {

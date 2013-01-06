@@ -1,5 +1,4 @@
 var selectedDate = (function () {
-  var localFormat = "DD/MM/YYYY";
   var keyFormat = "YYYY-MM-DD";
 
   var getAsKey = function () {
@@ -11,6 +10,7 @@ var selectedDate = (function () {
   };
   
   var getFormatted = function () {
+    var localFormat = i18n.getDateFormat();
     return getAsMoment().format(localFormat);
   };
 
@@ -23,6 +23,7 @@ var selectedDate = (function () {
   };
 
   var getTomorrowFormatted = function () {
+    var localFormat = i18n.getDateFormat();
     return getTomorrowAsMoment().format(localFormat);
   };
 
