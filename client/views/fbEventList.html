@@ -25,11 +25,11 @@
           {{#each fbEvents}}
             <div class="event-info">
               <div class="event-picture">
-                <img src="{{picture.data.url}}" alt="{{name}}">
+                <a href="#"><img src="{{picture.data.url}}" alt="{{name}}"></a>
               </div>
               <div class="event-description">
                 <div class="event-name" title="{{name}}">
-                  <h4>{{name}}</h4>
+                  <h4><a href="#">{{name}}</a></h4>
                 </div>
                 <div class="event-row event-time">
                   <i class="icon-time"></i> {{formatDate start_time}}

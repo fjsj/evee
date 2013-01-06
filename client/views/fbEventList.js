@@ -20,9 +20,11 @@ Template.tomorrowEvents.tomorrowContext = function () {
 var fbEventListEvents = {
   "click .event-info .event-picture": function (ev) {
     selectedEvent.set(this);
+    ev.preventDefault();
   },
   "click .event-info .event-name": function (ev) {
     selectedEvent.set(this);
+    ev.preventDefault();
   }
 }
 

@@ -38,6 +38,8 @@ body {
 
 .navbar .nav {
     font-family: "Exo", "PT Sans", "Segoe UI", sans-serif;
+    float: right;
+    margin-right: 0px;
 }
 
 .navbar .nav > li {
@@ -235,10 +237,6 @@ time span {
     height: 75px;
 }
 
-.step-fluid .day-content .event-info .event-picture img:hover {
-    cursor: pointer;
-}
-
 .step-fluid .day-content .event-info .event-description {
     font-family: "Exo", "Open Sans", "Segoe UI", sans-serif;
     margin-left: 80px;
@@ -264,10 +262,6 @@ time span {
     margin-top: 2px;
     margin-bottom: 0px;
     line-height: 20px;
-}
-
-.step-fluid .day-content .event-info .event-description .event-name h4:hover {
-    cursor: pointer;
 }
 
 .event-row {
