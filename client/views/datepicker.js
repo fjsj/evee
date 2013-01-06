@@ -28,7 +28,12 @@ function scrollToIfHidden (selector, partially, destinationSelector) {
 Template.datepicker.rendered = function () {
   var $datepicker = $('#datepicker');
   var $datepickerInput = $('#datepicker input');
-  
+  var $datepickerDropdown = $('.datepicker-dropdown');
+
+  if ($datepickerDropdown.length != 0) {
+    $datepicker.datepicker("remove");
+    $datepickerDropdown.remove();
+  }
   $datepicker.datepicker({
     format: i18n.getDatepickerFormat(),
     language: i18n.getLanguage(),
