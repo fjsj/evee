@@ -69,8 +69,35 @@ var facebook = (function () {
     }
   };
 
+  var fetchAndStoreEventAttendees = function (accessToken, id) {
+    var url = "https://graph.facebook.com/" + id + "?fields=attending.limit(1000).fields(name,gender,picture.width(50).height(50))";
+    url += "&access_token=" + accessToken;
+    Meteor.http.get(url, {timeout: 30000}, processAttendees);
+  };
+
+  var processAttendees = function (error, result) {
+    if (result.statusCode == 200) {
+      var json = JSON.parse(result.content);
+      storeEventAttendees(json.id, json.attending.data);
+    }
+  };
+
+  var storeEventAttendees = function (id, attendeesList) {
+    Session.set("attendees" + id, attendeesList);
+  };
+
+  var getEventAttendees = function (id) {
+    try {
+      return Session.get("attendees" + id);
+    } catch (e) {
+      return null;
+    }
+  };
+
   return {
     fetchAndStoreEvents: fetchAndStoreEvents,
-    getEventsByDate: getEventsByDate
+    getEventsByDate: getEventsByDate,
+    fetchAndStoreEventAttendees: fetchAndStoreEventAttendees,
+    getEventAttendees: getEventAttendees
   };
 })();

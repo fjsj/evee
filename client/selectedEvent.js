@@ -1,6 +1,6 @@
 var selectedEvent = (function () {
   var get = function () {
-    return Session.get("selectedEvent");
+    return Session.get("selectedEvent") || null;
   };
 
   var set = function (event) {

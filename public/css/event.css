@@ -34,7 +34,6 @@
 
 .event-detailed-info .event-attendees .event-content {
     border-left: 6px #211f30 solid;
-    padding: 1em;
     font-size: 18px;
 }
 
@@ -70,4 +69,27 @@
 
 .female {
     background-image: url("/img/female32.png");
+}
+
+.event-detailed-info .event-attendee {
+    border-bottom: 1px #cecece solid;
+}
+
+.event-detailed-info .event-attendee:last-child {
+    border-bottom: none;
+}
+
+.event-detailed-info .event-attendee .attendee-picture {
+    display: inline-block;
+}
+
+.event-detailed-info .event-attendee .attendee-picture img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.event-detailed-info .event-attendee .attendee-info {
+    display: inline-block;
 }
