@@ -25,7 +25,7 @@
             <i class="icon-map-marker icon-2x pull-left"></i> <span class="event-data-text">{{location}}</span>
           </div>
           <div class="event-data facebook-link" title="{{name}}">
-            <i class="icon-facebook-sign icon-2x pull-left"></i> <span class="event-data-text">ver no Facebook</a></span>
+            <i class="icon-facebook-sign icon-2x pull-left"></i> <a href="https://www.facebook.com/events/{{id}}"><span class="event-data-text">ver no Facebook</a></span>
           </div>
           <div class="event-data event-ratio">
             <i class="female"></i> {{femaleRatio maleRatio}}%
@@ -38,9 +38,9 @@
           {{#each attendees}}
             <div class="event-attendee">
               <div class="attendee-picture">
-                <img src="{{picture.data.url}}" alt="{{name}}">
+                <a href="https://www.facebook.com/{{id}}"><img src="{{picture.data.url}}" alt="{{name}}"></a>
               </div><div class="attendee-info">
-                {{name}}
+                <a href="https://www.facebook.com/{{id}}">{{name}}</a>
               </div>
             </div>
           {{/each}}
