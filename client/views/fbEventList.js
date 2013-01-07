@@ -22,11 +22,13 @@ Template.todayEvents.rendered = function() {
 };
 
 var fbEventListEvents = {
-  "click .event-info .event-picture": function (ev) {
+  "click .event-info .event-picture a": function (ev) {
+    $helpers.scrollTo("html, body");
     selectedEvent.set(this);
     ev.preventDefault();
   },
-  "click .event-info .event-name": function (ev) {
+  "click .event-info .event-name a": function (ev) {
+    $helpers.scrollTo("html, body");
     selectedEvent.set(this);
     ev.preventDefault();
   }

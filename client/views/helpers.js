@@ -63,6 +63,7 @@ $helpers = (function () {
   }
 
   return {
+    scrollTo: scrollTo,
     scrollToIfHidden: scrollToIfHidden,
     forceAllToSameHeight: forceAllToSameHeight
   };

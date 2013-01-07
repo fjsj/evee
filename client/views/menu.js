@@ -1,9 +1,11 @@
 Template.menu.events({
-  "click .brand": function (ev) {
+  "click a.brand": function (ev) {
+    $helpers.scrollTo("html, body");
     selectedEvent.clear();
     ev.preventDefault();
   },
-  "click .back-home": function (ev) {
+  "click .back-home a": function (ev) {
+    $helpers.scrollTo("html, body");
     selectedEvent.clear();
     ev.preventDefault();
   }
