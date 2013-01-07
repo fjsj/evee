@@ -10,9 +10,22 @@
     vertical-align: top;
 }
 
-.event-detailed-info .event-title {
+.event-detailed-info .event-data {
     margin-left: 175px;
     margin-right: 10px;
+}
+
+.event-detailed-info .event-data h2 {
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+.event-detailed-info .event-data i {
+    width: 1em;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 4px;
+    display: inline-block;
 }
 
 .event-detailed-info .place-date-time .step-header {
@@ -38,24 +51,18 @@
     font-size: 18px;
 }
 
-.event-detailed-info .event-data {
-    margin-bottom: 6px;
+.event-detailed-info .event-content-row {
+    margin-bottom: 10px;
 }
 
-.event-detailed-info .event-data i {
+.event-detailed-info .event-content-row i {
+    vertical-align: middle;
     width: 1em;
+    display: inline-block;
     text-align: center;
 }
 
-.event-detailed-info .event-data .event-data-text {
-    line-height: 34px;
-}
-
-.event-detailed-info .event-ratio {
-    margin-top: 10px;
-}
-
-.event-detailed-info .event-data .male, .event-detailed-info .event-data .female {
+.event-detailed-info .event-content-row i.male, .event-detailed-info .event-content-row i.female {
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -63,13 +70,21 @@
     background-repeat: no-repeat;
 }
 
-.male {
+.event-detailed-info .male {
     background-image: url("/img/male32.png");
     margin-left: 10px;
 }
 
-.female {
+.event-detailed-info .female {
     background-image: url("/img/female32.png");
+}
+
+.event-detailed-info .event-full-description {
+    margin-top: 1em;
+}
+
+.event-detailed-info .event-full-description p {
+    margin-left: 4px;
 }
 
 .event-detailed-info .event-attendee {

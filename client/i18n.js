@@ -10,7 +10,7 @@ var i18n = (function () {
     "Sign in with your Facebook to see events": "Entre com seu Facebook para ver eventos",
     "back to home": "voltar para home",
     "Step 4: event information": "Passo 4: informações sobre o evento",
-    "Place, date and time": "Local, data, hora",
+    "Details": "Detalhes",
     "view on Facebook": "ver no Facebook",
     "Attending": "Quem vai"
   };

@@ -4,9 +4,10 @@
       <div class="hero-unit container-shadow">
         <div class="event-picture">
           <img src="{{picture.data.url}}" alt="{{name}}">
-        </div><div class="event-title">
+        </div><div class="event-data">
           <h1>{{name}}</h1>
-          <h2>{{description}}</h2>
+          <h2><i class="icon-map-marker"></i> {{location}}</h2>
+          <div class="event-time"><i class="icon-time"></i> {{formatDate start_time}}</div>
         </div>
       </div>
     </div>
@@ -16,21 +17,21 @@
         <h3>{{trans "Step 4: event information"}}</h3>
       </div>
       <div class="step-fluid place-date-time">
-        <div class="step-header"><h3><i class="icon-tags pull-left"></i> {{trans "Place, date and time"}}</h3></div>
+        <div class="step-header"><h3><i class="icon-tags pull-left"></i> {{trans "Details"}}</h3></div>
         <div class="event-content">
-          <div class="event-data event-time">
-            <i class="icon-time icon-2x pull-left"></i> <span class="event-data-text">{{formatDate start_time}}</span>
+          <div class="event-content-row facebook-link" title="{{name}}">
+            <i class="icon-facebook-sign icon-2x"></i> <a href="https://www.facebook.com/events/{{id}}"><span class="event-data-text">{{trans "view on Facebook"}}</a></span>
           </div>
-          <div class="event-data event-location" title="{{location}}">
-            <i class="icon-map-marker icon-2x pull-left"></i> <span class="event-data-text">{{location}}</span>
+          <div class="event-content-row event-ratio">
+            <i class="female"></i> {{#ifIsNull maleRatio}}?{{else}}{{femaleRatio maleRatio}}%{{/ifIsNull}}
+            <i class="male"></i> {{#ifIsNull maleRatio}}?{{else}}{{maleRatio}}%{{/ifIsNull}}
           </div>
-          <div class="event-data facebook-link" title="{{name}}">
-            <i class="icon-facebook-sign icon-2x pull-left"></i> <a href="https://www.facebook.com/events/{{id}}"><span class="event-data-text">{{trans "view on Facebook"}}</a></span>
+          {{#if description}}
+          <div class="event-content-row event-full-description">
+            <i class="icon-file-alt icon-2x"></i> Descrição:
+            <p>{{nl2br description}}</p>
           </div>
-          <div class="event-data event-ratio">
-            <i class="female"></i> {{femaleRatio maleRatio}}%
-            <i class="male"></i> {{maleRatio}}%
-          </div>
+          {{/if}}
         </div>
       </div><div class="step-fluid event-attendees">
         <div class="step-header"><h3><i class="icon-group pull-left"></i> {{trans "Attending"}}</h3></div>
