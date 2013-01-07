@@ -21,34 +21,32 @@
           </div>
         </div>
       {{else}}
-        {{#if fbEvents}}
-          {{#each fbEvents}}
-            <div class="event-info">
-              <div class="event-picture">
-                <a href="#"><img src="{{picture.data.url}}" alt="{{name}}"></a>
-              </div>
-              <div class="event-description">
-                <div class="event-name" title="{{name}}">
-                  <h4><a href="#">{{name}}</a></h4>
-                </div>
-                <div class="event-row event-time">
-                  <i class="icon-time"></i> {{formatDate start_time}}
-                </div>
-                <div class="event-row event-location" title="{{location}}">
-                  <i class="icon-map-marker"></i> {{location}}
-                </div>
-                <!--<div class="event-row event-ratio">
-                  <i class="female"></i> 50%
-                  <i class="male"></i> 50%
-                </div>-->
-              </div>
+        {{#each fbEvents}}
+          <div class="event-info">
+            <div class="event-picture">
+              <a href="#"><img src="{{picture.data.url}}" alt="{{name}}"></a>
             </div>
-          {{/each}}
+            <div class="event-description">
+              <div class="event-name" title="{{name}}">
+                <h4><a href="#">{{name}}</a></h4>
+              </div>
+              <div class="event-row event-time">
+                <i class="icon-time"></i> {{formatDate start_time}}
+              </div>
+              <div class="event-row event-location" title="{{location}}">
+                <i class="icon-map-marker"></i> {{location}}
+              </div>
+              <!--<div class="event-row event-ratio">
+                <i class="female"></i> 50%
+                <i class="male"></i> 50%
+              </div>-->
+            </div>
+          </div>
         {{else}}
           <div class="events-info-message">
             <i class="icon-check-empty icon-2x pull-left"></i> {{trans "No events found at this date :("}}
           </div>
-        {{/if}}
+        {{/each}}
       {{/ifIsNull}}
     {{else}}
       <div class="row-fluid">

@@ -14,7 +14,8 @@ var i18n = (function () {
     "view on Facebook": "ver no Facebook",
     "Description": "Descrição",
     "Loading...": "Carregando...",
-    "Attending": "Quem vai"
+    "Attending": "Quem vai",
+    "No attendees found": "Nenhum encontrado"
   };
   var messagesKeys = _.keys(messagesEN_PT);
   var messagesEN_EN = _.object(messagesKeys, messagesKeys);

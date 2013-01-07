@@ -36,21 +36,33 @@
       </div><div class="step-fluid event-attendees">
         <div class="step-header"><h3><i class="icon-group pull-left"></i> {{trans "Attending"}}</h3></div>
         <div class="event-content">
-          {{#each attendees}}
-            <div class="event-attendee">
-              <div class="attendee-picture">
-                <a href="https://www.facebook.com/{{id}}"><img src="{{picture.data.url}}" alt="{{name}}"></a>
-              </div><div class="attendee-info">
-                <a href="https://www.facebook.com/{{id}}">{{name}}</a>
+          {{#ifIsNull attendees}}
+            <div class="row-fluid">
+              <div class="attendees-info-message">
+                <div class="event-content-row">
+                  <i class="icon-spinner icon-spin icon-2x"></i> {{trans "Loading..."}}
+                </div>
               </div>
             </div>
           {{else}}
-            <div class="row-fluid">
-              <div class="attendees-info-message">
-                <i class="icon-spinner icon-spin icon-2x pull-left"></i> {{trans "Loading..."}}
+            {{#each attendees}}
+              <div class="event-attendee">
+                <div class="attendee-picture">
+                  <a href="https://www.facebook.com/{{id}}"><img src="{{picture.data.url}}" alt="{{name}}"></a>
+                </div><div class="attendee-info">
+                  <a href="https://www.facebook.com/{{id}}">{{name}}</a>
+                </div>
               </div>
-            </div>
-          {{/each}}
+            {{else}}
+              <div class="row-fluid">
+                <div class="attendees-info-message">
+                  <div class="event-content-row">
+                    <i class="icon-check-empty icon-2x"></i> {{trans "No attendees found"}}
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          {{/ifIsNull}}
         </div>
       </div>
     </div>

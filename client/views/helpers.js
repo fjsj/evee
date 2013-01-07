@@ -24,3 +24,46 @@ Handlebars.registerHelper('nl2br', function(text) {
   var nl2br = (text + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
   return new Handlebars.SafeString(nl2br);
 });
+
+$helpers = (function () {
+  var isScrolledIntoView = function (selector, fully) {
+    // http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(selector).offset().top;
+    var elemBottom = elemTop + $(selector).height();
+
+    var isVisible = (elemBottom <= docViewBottom) && (elemTop >= docViewTop);
+    if (fully) {
+      return isVisible = isVisible && (elemBottom >= docViewTop) && (elemTop <= docViewBottom);
+    }
+    return isVisible;
+  }
+
+  var scrollTo = function (selector) {
+    $('html, body').animate({
+      scrollTop: $(selector).offset().top
+    }, 500);
+  }
+
+  var scrollToIfHidden = function (selector, partially, destinationSelector) {
+    if (!isScrolledIntoView(selector, partially)) {
+      scrollTo(destinationSelector);
+    }
+  }
+
+  var forceAllToSameHeight = function (selector) {
+    var heights = [];
+    $(selector).each(function () {
+      heights.push($(this).height());
+    });
+    var maxHeight = _.max(heights);
+    $(selector).css("height", maxHeight);
+  }
+
+  return {
+    scrollToIfHidden: scrollToIfHidden,
+    forceAllToSameHeight: forceAllToSameHeight
+  };
+})();

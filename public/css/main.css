@@ -198,10 +198,12 @@ body {
 
 .today .day-content {
     border-left: 6px #b73700 solid;
+    min-height: 4em;
 }
 
 .tomorrow .day-content {
     border-left: 6px #211f30 solid;
+    min-height: 4em;
 }
 
 .day-content .events-info-message {

@@ -3,6 +3,7 @@ Template.fbEvent.rendered = function () {
   Meteor.call("getAccessToken", function (error, accessToken) {
     facebook.fetchAndStoreEventAttendees(accessToken, event.id);
   });
+  $helpers.forceAllToSameHeight(".event-content");
 };
 
 Template.fbEvent.attendees = function () {
@@ -11,7 +12,7 @@ Template.fbEvent.attendees = function () {
 
 Template.fbEvent.maleRatio = function () {
   var attendees = facebook.getEventAttendees(this.id);
-  if (attendees) {
+  if (attendees && attendees.length) {
     var total = attendees.length;
     var males = _.reduce(attendees, function (memo, a) { return memo + (a.gender === "male" ? 1 : 0) }, 0);
     return Math.floor((males / total) * 100);
@@ -22,6 +23,6 @@ Template.fbEvent.maleRatio = function () {
 
 Template.fbEvent.helpers({
   femaleRatio: function (maleRatio) {
-    return maleRatio ? Math.abs(maleRatio - 100) : null;
+    return maleRatio ? 100 - maleRatio : null;
   }
 });

@@ -78,7 +78,8 @@ var facebook = (function () {
   var processAttendees = function (error, result) {
     if (result.statusCode == 200) {
       var json = JSON.parse(result.content);
-      storeEventAttendees(json.id, json.attending.data);
+      var attending = json.attending ? json.attending.data : [];
+      storeEventAttendees(json.id, attending);
     }
   };
 
@@ -87,11 +88,7 @@ var facebook = (function () {
   };
 
   var getEventAttendees = function (id) {
-    try {
-      return Session.get("attendees" + id);
-    } catch (e) {
-      return null;
-    }
+    return Session.get("attendees" + id) || null;
   };
 
   return {

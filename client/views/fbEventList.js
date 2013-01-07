@@ -17,6 +17,10 @@ Template.tomorrowEvents.tomorrowContext = function () {
   }
 };
 
+Template.todayEvents.rendered = function() {
+  $helpers.forceAllToSameHeight(".day-content");
+};
+
 var fbEventListEvents = {
   "click .event-info .event-picture": function (ev) {
     selectedEvent.set(this);
@@ -26,7 +30,7 @@ var fbEventListEvents = {
     selectedEvent.set(this);
     ev.preventDefault();
   }
-}
+};
 
 Template.todayEvents.events(fbEventListEvents);
 Template.tomorrowEvents.events(fbEventListEvents);

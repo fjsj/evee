@@ -49,6 +49,7 @@
 .event-detailed-info .event-attendees .event-content {
     border-left: 6px #211f30 solid;
     font-size: 18px;
+    padding-bottom: 2em;
 }
 
 .event-detailed-info .event-content-row {
