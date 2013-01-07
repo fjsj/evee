@@ -3,7 +3,7 @@
     overflow: hidden;
 }
 
-.event-detailed-info .event-picture {
+.event-detailed-info .event-picture img {
     float: left;
     width: 160px;
     height: 160px;
