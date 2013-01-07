@@ -79,12 +79,12 @@
     background-image: url("/img/female32.png");
 }
 
-.event-detailed-info .event-full-description {
-    margin-top: 1em;
-}
-
 .event-detailed-info .event-full-description p {
     margin-left: 4px;
+}
+
+.event-detailed-info .attendees-info-message {
+    padding: 1em;
 }
 
 .event-detailed-info .event-attendee {

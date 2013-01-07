@@ -12,6 +12,8 @@ var i18n = (function () {
     "Step 4: event information": "Passo 4: informações sobre o evento",
     "Details": "Detalhes",
     "view on Facebook": "ver no Facebook",
+    "Description": "Descrição",
+    "Loading...": "Carregando...",
     "Attending": "Quem vai"
   };
   var messagesKeys = _.keys(messagesEN_PT);
