@@ -48,6 +48,7 @@ body {
 
 .navbar-inverse .nav > li > a {
     color: white;
+    padding-bottom: 0px;
 }
 
 .navbar-inverse .nav > li > a:hover, .navbar-inverse .nav > .active > a:hover {
