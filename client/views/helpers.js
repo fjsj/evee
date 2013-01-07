@@ -54,12 +54,14 @@ $helpers = (function () {
   }
 
   var forceAllToSameHeight = function (selector) {
-    var heights = [];
-    $(selector).each(function () {
-      heights.push($(this).height());
-    });
-    var maxHeight = _.max(heights);
-    $(selector).css("height", maxHeight);
+    if ($(".step-fluid").css("display") === "inline-block") {
+      var heights = [];
+      $(selector).each(function () {
+        heights.push($(this).height());
+      });
+      var maxHeight = _.max(heights);
+      $(selector).css("height", maxHeight);
+    }
   }
 
   return {
