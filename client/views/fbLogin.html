@@ -1,0 +1,9 @@
+<template name="fbLogin">
+  <div id="fb-root"></div>
+
+  {{#if isLogged}}
+    {{userName}} <button id="logout-button" class="btn btn-danger" type="button">Logout</button>
+  {{else}}
+    <button id="login-button" class="btn btn-primary" type="button"><i class="icon-facebook-sign icon-white"></i> {{trans "Sign in with Facebook"}}</button>
+  {{/if}}
+</template>

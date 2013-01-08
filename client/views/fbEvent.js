@@ -1,8 +1,6 @@
 Template.fbEvent.rendered = function () {
   var event = this.data;
-  Meteor.call("getAccessToken", function (error, accessToken) {
-    facebook.fetchAndStoreEventAttendees(accessToken, event.id);
-  });
+  facebook.fetchAndStoreEventAttendees(event.id);
   $helpers.forceAllToSameHeight(".event-content");
 };
 

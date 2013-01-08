@@ -9,6 +9,7 @@ var i18n = (function () {
     "No events found at this date :(": "Nenhum evento nesta data :(",
     "Sign in with your Facebook to see events": "Entre com seu Facebook para ver eventos",
     "back to home": "voltar para home",
+    "Sign in with Facebook": "Entrar com o Facebook",
     "Step 4: event information": "Passo 4: informações sobre o evento",
     "Details": "Detalhes",
     "view on Facebook": "ver no Facebook",

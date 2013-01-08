@@ -7,7 +7,5 @@ preserve-inputs
 http
 jquery
 moment
-accounts-ui
-accounts-facebook
 underscore
 spiderable
