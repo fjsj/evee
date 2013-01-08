@@ -36,22 +36,22 @@ $helpers = (function () {
 
     var isVisible = (elemBottom <= docViewBottom) && (elemTop >= docViewTop);
     if (fully) {
-      return isVisible = isVisible && (elemBottom >= docViewTop) && (elemTop <= docViewBottom);
+      isVisible = isVisible && (elemBottom >= docViewTop) && (elemTop <= docViewBottom);
     }
     return isVisible;
-  }
+  };
 
   var scrollTo = function (selector) {
     $('html, body').animate({
       scrollTop: $(selector).offset().top
     }, 500);
-  }
+  };
 
   var scrollToIfHidden = function (selector, partially, destinationSelector) {
     if (!isScrolledIntoView(selector, partially)) {
       scrollTo(destinationSelector);
     }
-  }
+  };
 
   var forceAllToSameHeight = function (selector) {
     if ($(".step-fluid").css("display") === "inline-block") {
@@ -62,11 +62,11 @@ $helpers = (function () {
       var maxHeight = _.max(heights);
       $(selector).css("height", maxHeight);
     }
-  }
+  };
 
   return {
     scrollTo: scrollTo,
     scrollToIfHidden: scrollToIfHidden,
     forceAllToSameHeight: forceAllToSameHeight
   };
-})();
+}());

@@ -40,4 +40,4 @@ var selectedDate = (function () {
     getTomorrowFormatted: getTomorrowFormatted,
     setAsMoment: setAsMoment
   };
-})();
+}());

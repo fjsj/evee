@@ -16,7 +16,7 @@ var facebook = (function () {
   };
 
   var processEvents = function (error, result) {
-    if (result.statusCode == 200) {
+    if (result.statusCode === 200) {
       var json = JSON.parse(result.content);
       var events = jsonToEventList(json);
       sortByDate(events);
@@ -31,7 +31,7 @@ var facebook = (function () {
     json.friends.data.forEach(function (friend) {
       if (friend.events) {
         friend.events.data.forEach(function (event) {
-          if (!(event.id in eventsIds)) {
+          if (!(eventsIds.hasOwnProperty(event.id))) {
             events.push(event);
             eventsIds[event.id] = true;
           }
@@ -76,7 +76,7 @@ var facebook = (function () {
   };
 
   var processAttendees = function (error, result) {
-    if (result.statusCode == 200) {
+    if (result.statusCode === 200) {
       var json = JSON.parse(result.content);
       var attending = json.attending ? json.attending.data : [];
       storeEventAttendees(json.id, attending);
@@ -97,4 +97,4 @@ var facebook = (function () {
     fetchAndStoreEventAttendees: fetchAndStoreEventAttendees,
     getEventAttendees: getEventAttendees
   };
-})();
+}());

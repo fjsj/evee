@@ -3,7 +3,7 @@ Template.datepicker.rendered = function () {
   var $datepickerInput = $('#datepicker input');
   var $datepickerDropdown = $('.datepicker-dropdown');
 
-  if ($datepickerDropdown.length != 0) {
+  if ($datepickerDropdown.length !== 0) {
     $datepicker.datepicker("remove");
     $datepickerDropdown.remove();
   }

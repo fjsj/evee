@@ -16,7 +16,7 @@ var selectedEvent = (function () {
     set: set,
     clear: clear
   };
-})();
+}());
 
 Handlebars.registerHelper("selectedEvent", function () {
   return selectedEvent.get();

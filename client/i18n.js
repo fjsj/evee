@@ -62,4 +62,4 @@ var i18n = (function () {
     getLanguage: getLanguage,
     setLanguage: setLanguage
   };
-})();
+}());
