@@ -112,6 +112,7 @@ body {
 .hero-unit h1 {
     font-family: "Convergence", "PT Sans", "Segoe UI", sans-serif;
     font-size: 48px;
+    margin-top: 6px;
 }
 
 .hero-unit h2 {
