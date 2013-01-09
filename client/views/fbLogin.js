@@ -1,19 +1,7 @@
-var login = function (accessToken) {
-  facebook.setAccessToken(accessToken);
-};
-
-var logout = function () {
-  FB.logout(function(response) {
-    // logged out
-  });
-  facebook.setAccessToken(null);
-  facebook.setUserName(null);
-};
-
 var showLoginPopup = function () {
   FB.login(function(response) {
     if (response.authResponse) {
-      login(response.authResponse.accessToken); 
+      facebook.login(response.authResponse.accessToken); 
     } else {
       // cancelled
     }
@@ -41,7 +29,7 @@ Template.fbLogin.created = function () {
       // Additional initialization code such as adding Event Listeners goes here
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
-          login(response.authResponse.accessToken);
+          facebook.login(response.authResponse.accessToken);
         } else if (response.status === 'not_authorized') {
           // not_authorized
         } else {
@@ -77,6 +65,9 @@ Template.fbLogin.events({
     showLoginPopup();
   },
   "click #logout-button": function () {
-    logout();
+    FB.logout(function(response) {
+      // logged out
+    });
+    facebook.logout();
   }
 });

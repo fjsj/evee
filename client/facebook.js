@@ -1,12 +1,13 @@
 var facebook = (function () {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
+  var sessionKeys = {};
+
+  var login = function (accessToken) {
+    return Session.set("accessToken", accessToken);
+  };
 
   var getAccessToken = function () {
     return Session.get("accessToken") || null;
-  };
-
-  var setAccessToken = function (accessToken) {
-    return Session.set("accessToken", accessToken);
   };
 
   var getUserName = function () {
@@ -99,21 +100,30 @@ var facebook = (function () {
 
   var storeEventAttendees = function (id, attendeesList) {
     Session.set("attendees" + id, attendeesList);
+    sessionKeys["attendees" + id] = true;
   };
 
   var getEventAttendees = function (id) {
     return Session.get("attendees" + id) || null;
   };
 
+  var logout = function () {
+    _.extend(sessionKeys, {"accessToken": true, "userName": true, "datesAndEvents": true});
+    _.each(_.keys(sessionKeys), function (k) {
+      Session.set(k, null);
+    });
+    sessionKeys = {};
+  };
+
   Meteor.autorun(fetchAndStoreEvents);
 
   return {
+    login: login,
     getAccessToken: getAccessToken,
-    setAccessToken: setAccessToken,
     getUserName: getUserName,
-    setUserName: setUserName,
     getEventsByDate: getEventsByDate,
     fetchAndStoreEventAttendees: fetchAndStoreEventAttendees,
-    getEventAttendees: getEventAttendees
+    getEventAttendees: getEventAttendees,
+    logout: logout
   };
 }());
