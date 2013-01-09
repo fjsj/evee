@@ -11,7 +11,15 @@
         // automatically
         Fiber(function () {
           if (req.url === "/fb/channel.html") {
-            res.writeHead(200, {'Content-Type': 'text/html'});
+            // using caching headers as recommended by https://developers.facebook.com/docs/reference/javascript/#channel
+            var momentNextYear = moment().add("years", 1);
+            var cacheExpire = 60*60*24*365;
+            res.writeHead(200, {
+              'Content-Type': 'text/html',
+              'Pragma': 'public',
+              'Cache-Control': 'max-age=' + cacheExpire,
+              'Expires': moment().add("seconds", cacheExpire).format('ddd, DD MMM YYYY hh:mm:ss') + " GMT"
+            });
             res.end('<script src="//connect.facebook.net/en_US/all.js"></script>');
           } else {
             // not an channel.html request. pass to next middleware.
