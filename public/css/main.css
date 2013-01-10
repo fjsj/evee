@@ -397,6 +397,9 @@ footer a:hover {
         height: 100%;
         overflow: visible;
     }
+    .step-fluid .day-content {
+        min-height: auto !important;
+    }
 }
 
 /* Landscape phones and down */
@@ -423,5 +426,8 @@ footer a:hover {
         width: 100%;
         height: 100%;
         overflow: visible;
+    }
+    .step-fluid .day-content {
+        min-height: auto !important;
     }
 }

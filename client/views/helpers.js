@@ -60,7 +60,7 @@ $helpers = (function () {
         heights.push($(this).height());
       });
       var maxHeight = _.max(heights);
-      $(selector).css("height", maxHeight);
+      $(selector).css("min-height", maxHeight);
     }
   };
 
