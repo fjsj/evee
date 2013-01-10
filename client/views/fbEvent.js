@@ -1,6 +1,4 @@
 Template.fbEvent.rendered = function () {
-  var event = this.data;
-  facebook.fetchAndStoreEventAttendees(event.id);
   $helpers.forceAllToSameHeight(".event-content");
 };
 

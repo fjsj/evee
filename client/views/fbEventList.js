@@ -30,17 +30,16 @@ Template.todayEvents.rendered = function() {
 };
 
 (function() {
+  var navigateToEventPage = function (ev) {
+    $helpers.scrollTo("html, body");
+    var fbEvent = this;
+    var eventDateKey = moment(fbEvent.start_time, facebook.fbDateFormats).format(selectedDate.keyFormat);
+    Meteor.Router.to('/event/' + eventDateKey + '/' + fbEvent.id);
+    ev.preventDefault();
+  };
   var fbEventListEvents = {
-    "click .event-info .event-picture a": function (ev) {
-      $helpers.scrollTo("html, body");
-      selectedEvent.set(this);
-      ev.preventDefault();
-    },
-    "click .event-info .event-name a": function (ev) {
-      $helpers.scrollTo("html, body");
-      selectedEvent.set(this);
-      ev.preventDefault();
-    }
+    "click .event-info .event-picture a": navigateToEventPage,
+    "click .event-info .event-name a": navigateToEventPage
   };
 
   Template.todayEvents.events(fbEventListEvents);

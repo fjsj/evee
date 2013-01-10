@@ -4,6 +4,8 @@
     "branch": "master"
   },
   "packages": {
-    "moment": {}
+    "moment": {},
+    "page-js": {},
+    "router": {}
   }
 }

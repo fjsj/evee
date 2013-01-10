@@ -65,8 +65,8 @@ var facebook = (function () {
     var datesAndEvents = {};
     events.forEach(function (event) {
       var dateKey = moment(event.start_time, fbDateFormats).format(selectedDate.keyFormat);
-      datesAndEvents[dateKey] = datesAndEvents[dateKey] || [];
-      datesAndEvents[dateKey].push(event);
+      datesAndEvents[dateKey] = datesAndEvents[dateKey] || {};
+      datesAndEvents[dateKey][event.id] = event;
     });
     return datesAndEvents;
   };
@@ -77,7 +77,21 @@ var facebook = (function () {
 
   var getEventsByDate = function (dateKey) {
     try {
-      return Session.get("datesAndEvents")[dateKey];
+      return _.values(Session.get("datesAndEvents")[dateKey]);
+    } catch (e) {
+      return null;
+    }
+  };
+
+  var getEvent = function (dateKey, id) {
+    try {
+      var fbEvent = Session.get("datesAndEvents")[dateKey][id];
+      if (fbEvent) {
+        fetchAndStoreEventAttendees(id);
+        return fbEvent;
+      } else {
+        return null;
+      }
     } catch (e) {
       return null;
     }
@@ -118,11 +132,12 @@ var facebook = (function () {
   Meteor.autorun(fetchAndStoreEvents);
 
   return {
+    fbDateFormats: fbDateFormats,
     login: login,
     getAccessToken: getAccessToken,
     getUserName: getUserName,
     getEventsByDate: getEventsByDate,
-    fetchAndStoreEventAttendees: fetchAndStoreEventAttendees,
+    getEvent: getEvent,
     getEventAttendees: getEventAttendees,
     logout: logout
   };
