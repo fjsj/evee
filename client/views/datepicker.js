@@ -8,8 +8,8 @@ Template.datepicker.rendered = function () {
     $datepickerDropdown.remove();
   }
   $datepicker.datepicker({
-    format: i18n.getDatepickerFormat(),
-    language: i18n.getLanguage(),
+    format: I18N.getDatepickerFormat(),
+    language: I18N.getLanguage(),
     autoclose: true,
     todayBtn: "linked",
     todayHighlight: true
@@ -21,8 +21,8 @@ Template.datepicker.rendered = function () {
     $datepicker.datepicker("show");
   });
 
-  $datepickerInput.val(selectedDate.getFormatted());
+  $datepickerInput.val(SelectedDate.getFormatted());
   $datepicker.on('changeDate', function (ev) {
-    selectedDate.setAsMoment(moment.utc(ev.date.valueOf()));
+    SelectedDate.setAsMoment(moment.utc(ev.date.valueOf()));
   });
 };

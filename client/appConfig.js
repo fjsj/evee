@@ -1,4 +1,4 @@
-var appConfig = (function () {
+var AppConfig = (function () {
   var isLocalhost = window.location.href.indexOf("localhost") !== -1;
 
   var appId;

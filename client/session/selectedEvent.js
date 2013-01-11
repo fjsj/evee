@@ -1,4 +1,4 @@
-var selectedEvent = (function () {
+var SelectedEvent = (function () {
   var get = function () {
     return Session.get("selectedEvent") || null;
   };
@@ -19,5 +19,5 @@ var selectedEvent = (function () {
 }());
 
 Handlebars.registerHelper("selectedEvent", function () {
-  return selectedEvent.get();
+  return SelectedEvent.get();
 });

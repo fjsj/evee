@@ -3,11 +3,11 @@ Template.fbEvent.rendered = function () {
 };
 
 Template.fbEvent.attendees = function () {
-  return facebook.getEventAttendees(this.id);
+  return Facebook.getEventAttendees(this.id);
 };
 
 Template.fbEvent.maleRatio = function () {
-  var attendees = facebook.getEventAttendees(this.id);
+  var attendees = Facebook.getEventAttendees(this.id);
   if (attendees && attendees.length) {
     attendees = _.filter(attendees, function (a) { return a.hasOwnProperty("gender"); });
     if (attendees.length) {

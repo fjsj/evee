@@ -1,4 +1,4 @@
-var facebook = (function () {
+var Facebook = (function () {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
   var sessionKeys = {};
 
@@ -64,7 +64,7 @@ var facebook = (function () {
   var eventsToDatesAndEventsMap = function (events) {
     var datesAndEvents = {};
     events.forEach(function (event) {
-      var dateKey = moment(event.start_time, fbDateFormats).format(selectedDate.keyFormat);
+      var dateKey = moment(event.start_time, fbDateFormats).format(SelectedDate.keyFormat);
       datesAndEvents[dateKey] = datesAndEvents[dateKey] || {};
       datesAndEvents[dateKey][event.id] = event;
     });

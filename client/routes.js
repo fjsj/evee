@@ -1,9 +1,9 @@
 Meteor.Router.add({
   '/': function () {
-    selectedEvent.clear();
+    SelectedEvent.clear();
   },
   '/event/:dateKey/:id': function (dateKey, id) {
-    var fbEvent = facebook.getEvent(dateKey, id);
-    selectedEvent.set(fbEvent);
+    var fbEvent = Facebook.getEvent(dateKey, id);
+    SelectedEvent.set(fbEvent);
   }
 });

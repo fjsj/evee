@@ -1,7 +1,7 @@
 var showLoginPopup = function () {
   FB.login(function(response) {
     if (response.authResponse) {
-      facebook.login(response.authResponse.accessToken); 
+      Facebook.login(response.authResponse.accessToken); 
     } else {
       // cancelled
     }
@@ -16,12 +16,12 @@ Template.fbLogin.created = function () {
     window.fbAsyncInit = function() {
       // init the FB JS SDK
       var initConfig = {
-        appId      : appConfig.appId, // App ID from the App Dashboard
+        appId      : AppConfig.appId, // App ID from the App Dashboard
         status     : false, // check the login status upon init?
         cookie     : false, // set sessions cookies to allow your server to access the session?
         xfbml      : false  // parse XFBML tags on this page?
       };
-      if (!appConfig.isLocalhost) {
+      if (!AppConfig.isLocalhost) {
         initConfig["channelUrl"] = Meteor.absoluteUrl("fb/channel.html");
       }
       FB.init(initConfig);
@@ -29,7 +29,7 @@ Template.fbLogin.created = function () {
       // Additional initialization code such as adding Event Listeners goes here
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
-          facebook.login(response.authResponse.accessToken);
+          Facebook.login(response.authResponse.accessToken);
         } else if (response.status === 'not_authorized') {
           // not_authorized
         } else {
@@ -53,11 +53,11 @@ Template.fbLogin.created = function () {
 };
 
 Template.fbLogin.isLogged = function () {
-  return facebook.getAccessToken() !== null;
+  return Facebook.getAccessToken() !== null;
 };
 
 Template.fbLogin.userName = function () {
-  return facebook.getUserName() || '';
+  return Facebook.getUserName() || '';
 };
 
 Template.fbLogin.events({
@@ -68,6 +68,6 @@ Template.fbLogin.events({
     FB.logout(function(response) {
       // logged out
     });
-    facebook.logout();
+    Facebook.logout();
   }
 });

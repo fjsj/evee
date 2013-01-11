@@ -1,10 +1,10 @@
 Template.todayEvents.todayContext = function () {
-  var todayKey = selectedDate.getAsKey();
+  var todayKey = SelectedDate.getAsKey();
   if (todayKey) {
     return {
-      'currentDate': selectedDate.getFormatted(),
-      'isLogged': facebook.getAccessToken() !== null,
-      'fbEvents': facebook.getEventsByDate(todayKey)
+      'currentDate': SelectedDate.getFormatted(),
+      'isLogged': Facebook.getAccessToken() !== null,
+      'fbEvents': Facebook.getEventsByDate(todayKey)
     };
   } else {
     return null;
@@ -12,13 +12,13 @@ Template.todayEvents.todayContext = function () {
 };
 
 Template.tomorrowEvents.tomorrowContext = function () {
-  var todayKey = selectedDate.getAsKey();
+  var todayKey = SelectedDate.getAsKey();
   if (todayKey) {
-    var tomorrowKey = selectedDate.getTomorrowAsKey();
+    var tomorrowKey = SelectedDate.getTomorrowAsKey();
     return {
-      'currentDate': selectedDate.getTomorrowFormatted(),
-      'isLogged': facebook.getAccessToken() !== null,
-      'fbEvents': facebook.getEventsByDate(tomorrowKey)
+      'currentDate': SelectedDate.getTomorrowFormatted(),
+      'isLogged': Facebook.getAccessToken() !== null,
+      'fbEvents': Facebook.getEventsByDate(tomorrowKey)
     };
   } else {
     return null;
@@ -33,7 +33,7 @@ Template.todayEvents.rendered = function() {
   var navigateToEventPage = function (ev) {
     $helpers.scrollTo("html, body");
     var fbEvent = this;
-    var eventDateKey = moment(fbEvent.start_time, facebook.fbDateFormats).format(selectedDate.keyFormat);
+    var eventDateKey = moment(fbEvent.start_time, Facebook.fbDateFormats).format(SelectedDate.keyFormat);
     Meteor.Router.to('/event/' + eventDateKey + '/' + fbEvent.id);
     ev.preventDefault();
   };
