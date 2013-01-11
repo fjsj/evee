@@ -110,3 +110,17 @@
 .event-detailed-info .event-attendee .attendee-info {
     display: inline-block;
 }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 979px) {
+    .step-fluid .event-content {
+        min-height: auto !important;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .step-fluid .event-content {
+        min-height: auto !important;
+    }
+}
