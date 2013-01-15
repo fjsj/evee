@@ -334,11 +334,12 @@ time span {
 footer {
     background-color: #111;
     color: #cecece;
+    padding-top: 8px;
 }
 
 footer p {
     text-align: right;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-bottom: 0px;
     padding-bottom: 2px;
 }
