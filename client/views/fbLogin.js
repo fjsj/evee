@@ -1,13 +1,3 @@
-var showLoginPopup = function () {
-  FB.login(function(response) {
-    if (response.authResponse) {
-      Facebook.login(response.authResponse.accessToken);
-    } else {
-      // cancelled
-    }
-  }, {scope: 'user_events,friends_events'});
-};
-
 /*
  * Loads the Facebook JavaScript SDK when fbLogin template is created.
  */
@@ -72,14 +62,26 @@ Template.fbLogin.userName = function () {
  * Clicking in #login-button opens the Facebook JavaScript SDK login pop-up.
  * Clicking in #logout-button logs out the user from Facebook and from this app.
  */
-Template.fbLogin.events({
-  "click #login-button": function () {
-    showLoginPopup();
-  },
-  "click #logout-button": function () {
-    FB.logout(function(response) {
-      // logged out
-    });
-    Facebook.logout();
-  }
-});
+(function () {
+  var showLoginPopup = function () {
+    FB.login(function(response) {
+      if (response.authResponse) {
+        Facebook.login(response.authResponse.accessToken);
+      } else {
+        // cancelled
+      }
+    }, {scope: 'user_events,friends_events'});
+  };
+  
+  Template.fbLogin.events({
+    "click #login-button": function () {
+      showLoginPopup();
+    },
+    "click #logout-button": function () {
+      FB.logout(function(response) {
+        // logged out
+      });
+      Facebook.logout();
+    }
+  });
+}());
