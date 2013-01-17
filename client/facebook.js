@@ -20,6 +20,10 @@ var Facebook = (function () {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
   var sessionKeys = {};
 
+  var getFbDateFormats = function () {
+    return _.clone(fbDateFormats); // clone it to avoid accidental changes
+  };
+
   var login = function (accessToken) {
     return Session.set("accessToken", accessToken);
   };
@@ -159,7 +163,7 @@ var Facebook = (function () {
   Meteor.autorun(fetchAndStoreEvents);
 
   return {
-    fbDateFormats: fbDateFormats,
+    getFbDateFormats: getFbDateFormats,
     login: login,
     getAccessToken: getAccessToken,
     getUserName: getUserName,

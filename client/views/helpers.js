@@ -16,7 +16,7 @@ Handlebars.registerHelper('ifIsNull', function (value, options) {
  */
 Handlebars.registerHelper('formatDate', function (value) {
   var localFormat = I18N.getDateFormat();
-  return moment(value, Facebook.fbDateFormats).format("HH:mm " + localFormat);
+  return moment(value, Facebook.getFbDateFormats()).format("HH:mm " + localFormat);
 });
 
 /*
@@ -25,7 +25,7 @@ Handlebars.registerHelper('formatDate', function (value) {
  * which is compatible with Facebook.getEventsByDate function.
  */
 Handlebars.registerHelper('formatDateAsKey', function (value) {
-  return moment(value, Facebook.fbDateFormats).format(SelectedDate.getKeyFormat());
+  return moment(value, Facebook.getFbDateFormats()).format(SelectedDate.getKeyFormat());
 });
 
 /*
