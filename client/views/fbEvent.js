@@ -1,14 +1,34 @@
+/*
+ * Fix CSS columns issue by forcing both .event-content to same height.
+ */
 Template.fbEvent.rendered = function () {
   $helpers.forceAllToSameHeight(".event-content");
 };
 
+/*
+ * Attendees template variable.
+ * This variable is updated as soon as event attendees are fully fetched.
+ *
+ * Reactive context! Values are updated automatically,
+ * since Facebook namespace uses Meteor Session internaly,
+ * which is a reactive data source.
+ */
 Template.fbEvent.attendees = function () {
   return Facebook.getEventAttendees(this.id);
 };
 
+/*
+ * Male ratio template variable.
+ * This variable is updated as soon as event attendees are fully fetched.
+ *
+ * Reactive context! Values are updated automatically,
+ * since Facebook namespace uses Meteor Session internaly,
+ * which is a reactive data source.
+ */
 Template.fbEvent.maleRatio = function () {
   var attendees = Facebook.getEventAttendees(this.id);
   if (attendees && attendees.length) {
+    // when calculating ratio, discard attendees which have no gender data
     attendees = _.filter(attendees, function (a) { return a.hasOwnProperty("gender"); });
     if (attendees.length) {
       var total = attendees.length;
@@ -19,6 +39,12 @@ Template.fbEvent.maleRatio = function () {
   return null;
 };
 
+/*
+ * Female ratio template helper.
+ * Receives the maleRatio and calculates the
+ * femaleRatio by doing 100 - maleRatio.
+ * Returns null while maleRatio is not available.
+ */
 Template.fbEvent.helpers({
   femaleRatio: function (maleRatio) {
     return maleRatio ? 100 - maleRatio : null;

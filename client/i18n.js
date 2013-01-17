@@ -1,3 +1,8 @@
+/**
+ * Internationalization namespace.
+ * Exposes functions that allows translations to supported languages,
+ * getting of date formats and getting and setting of currently selected language.
+ */
 var I18N = (function () {
   var messagesEN_PT = {
     "An easy navigation through Facebook events": "Seus eventos do Facebook em um só lugar",

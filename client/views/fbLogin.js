@@ -1,32 +1,35 @@
 var showLoginPopup = function () {
   FB.login(function(response) {
     if (response.authResponse) {
-      Facebook.login(response.authResponse.accessToken); 
+      Facebook.login(response.authResponse.accessToken);
     } else {
       // cancelled
     }
   }, {scope: 'user_events,friends_events'});
 };
 
+/*
+ * Loads the Facebook JavaScript SDK when fbLogin template is created.
+ */
 Template.fbLogin.created = function () {
-  if (!Session.get("is Facebook JDK loaded?")) {
+  if (!Session.get("is Facebook JDK loaded?")) { // Load Facebook JDK only once.
     Session.set("is Facebook JDK loaded?", true);
     
-    // https://developers.facebook.com/docs/reference/javascript/
+    // See Facebook JavaScript JDK docs at: https://developers.facebook.com/docs/reference/javascript/
     window.fbAsyncInit = function() {
-      // init the FB JS SDK
+      // Init the FB JS SDK
       var initConfig = {
         appId      : AppConfig.appId, // App ID from the App Dashboard
         status     : false, // check the login status upon init?
         cookie     : false, // set sessions cookies to allow your server to access the session?
         xfbml      : false  // parse XFBML tags on this page?
       };
-      if (!AppConfig.isLocalhost) {
+      if (!AppConfig.isLocalhost) { // Serve channel.html file only on production
         initConfig["channelUrl"] = Meteor.absoluteUrl("fb/channel.html");
       }
       FB.init(initConfig);
 
-      // Additional initialization code such as adding Event Listeners goes here
+      // Sync Facebook login status with this app login status (automatically logging in if necessary).
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
           Facebook.login(response.authResponse.accessToken);
@@ -39,9 +42,6 @@ Template.fbLogin.created = function () {
     };
 
     // Load the SDK's source Asynchronously
-    // Note that the debug version is being actively developed and might 
-    // contain some type checks that are overly strict. 
-    // Please report such bugs using the bugs tool.
     (function(d, debug){
        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
        if (d.getElementById(id)) {return;}
@@ -52,6 +52,13 @@ Template.fbLogin.created = function () {
   }
 };
 
+/*
+ * Current user template variables.
+ *
+ * Reactive context! Values are updated automatically,
+ * since Facebook namespace uses Meteor Session internaly,
+ * which is a reactive data source.
+ */
 Template.fbLogin.isLogged = function () {
   return Facebook.getAccessToken() !== null;
 };
@@ -60,6 +67,11 @@ Template.fbLogin.userName = function () {
   return Facebook.getUserName() || '';
 };
 
+/*
+ * Facebook login click events.
+ * Clicking in #login-button opens the Facebook JavaScript SDK login pop-up.
+ * Clicking in #logout-button logs out the user from Facebook and from this app.
+ */
 Template.fbLogin.events({
   "click #login-button": function () {
     showLoginPopup();

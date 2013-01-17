@@ -1,3 +1,13 @@
+/**
+ * SelectedDate namespace.
+ * Exposes functions that get and set the currently selected date.
+ * Also exposes a keyFormat for using in dates->events maps.
+ *
+ * Since getter functions use Meteor Session internally,
+ * if they are used in reactive contexts, their returned values are updated automagically.
+ *
+ * A date is selected through the datepicker (see datepicker.js).
+ */
 var SelectedDate = (function () {
   var keyFormat = "YYYY-MM-DD";
 

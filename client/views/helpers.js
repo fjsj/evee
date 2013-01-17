@@ -1,3 +1,7 @@
+/*
+ * ifIsNull template helper.
+ * Template equivalent of if (value === null).
+ */
 Handlebars.registerHelper('ifIsNull', function (value, options) {
   if (value === null) {
     return options.fn(this);
@@ -6,28 +10,40 @@ Handlebars.registerHelper('ifIsNull', function (value, options) {
   }
 });
 
+/*
+ * formatDate template helper.
+ * Converts from Facebook date formats to local (current language) time and date format.
+ */
 Handlebars.registerHelper('formatDate', function (value) {
   var localFormat = I18N.getDateFormat();
   return moment(value, Facebook.fbDateFormats).format("HH:mm " + localFormat);
 });
 
+/*
+ * Translation template helper.
+ * Translate the given message to the current language (if necessary).
+ */
 Handlebars.registerHelper('trans', function (value) {
   return I18N.translate(value);
 });
 
-/**
- * Convert new line (\n\r) to <br>
- * from http://phpjs.org/functions/nl2br:480
+/*
+ * Convert new line (\n\r) to <br>.
+ * See: https://github.com/danharper/Handlebars-Helpers/blob/master/helpers.js
  */
-// https://github.com/danharper/Handlebars-Helpers/blob/master/helpers.js
 Handlebars.registerHelper('nl2br', function(text) {
   var nl2br = (text + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
   return new Handlebars.SafeString(nl2br);
 });
 
+/**
+ * jQuery-based helpers.
+ * scrollTo and scrollToIfHidden provide smooth scrolling functionality.
+ * forceAllToSameHeight forces .step-fluid content columns to have the same height.
+ */
 $helpers = (function () {
   var isScrolledIntoView = function (selector, fully) {
-    // http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+    // See: http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
     var docViewTop = $(window).scrollTop();
     var docViewBottom = docViewTop + $(window).height();
 

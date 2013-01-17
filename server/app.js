@@ -1,6 +1,6 @@
 (function () {
   if (Meteor.isServer) {
-    // serve channel.html file, based on http://stackoverflow.com/a/13871399/145349
+    // Serve channel.html file, based on http://stackoverflow.com/a/13871399/145349
     var connect = __meteor_bootstrap__.require("connect");
 
     __meteor_bootstrap__.app
@@ -11,7 +11,7 @@
         // automatically
         Fiber(function () {
           if (req.url === "/fb/channel.html") {
-            // using caching headers as recommended by https://developers.facebook.com/docs/reference/javascript/#channel
+            // Using caching headers as recommended by https://developers.facebook.com/docs/reference/javascript/#channel
             var momentNextYear = moment().add("years", 1);
             var cacheExpire = 60*60*24*365;
             res.writeHead(200, {
@@ -22,7 +22,7 @@
             });
             res.end('<script src="//connect.facebook.net/en_US/all.js"></script>');
           } else {
-            // not an channel.html request. pass to next middleware.
+            // Not an channel.html request. pass to next middleware.
             next();
             return;
           }

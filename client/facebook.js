@@ -1,3 +1,21 @@
+/**
+ * Facebook namespace.
+ * Exposes the most important functionalities of this app.
+ *
+ * Since getter functions use Meteor Session internally,
+ * if they are used in reactive contexts, their returned values are updated automagically.
+ *
+ * login and logout respectively sets and clear the current logged user Facebook access token.
+ * getAccessToken returns the logged user (if exists) access token.
+ * getUserName works similarly, but returns user's real name.
+ * getEventsByDate retuns a map of dates and fetched events objects, if events were already fetched.
+ * * The keys of this map of dates follow the keyFormat defined in SelectedDate (see selectedDate.js).
+ * getEvent returns the event object with the provided id (and starts to fetch its attendees in background).
+ * getEventAttendees returns the attendees array of the event with the provided id, if those attendees were already fetched.
+ *
+ * Events objects are fetched automatically every time access token changes,
+ * since the internal fetchAndStoreEvents function is in a autorun context.
+ */
 var Facebook = (function () {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
   var sessionKeys = {};
@@ -22,6 +40,8 @@ var Facebook = (function () {
     var accessToken = getAccessToken();
     if (accessToken !== null) {
       var timestamp = moment().startOf("day").unix();
+      // Using Facebook Graph API Field Expansion, that's why this is a huge URL.
+      // See: https://developers.facebook.com/docs/reference/api/field_expansion/
       var url = "https://graph.facebook.com/me?fields=name,friends.fields(events.since(" + timestamp + ").limit(25).fields(id,description,start_time,end_time,location,name,venue,picture.width(100).height(100).type(square)))";
       url += "&access_token=" + accessToken;
       Meteor.http.get(url, {timeout: 30000}, processEvents);
@@ -40,12 +60,12 @@ var Facebook = (function () {
   };
 
   var jsonToEventList = function (json) {
-    var eventsIds = {};
+    var eventsIds = {}; // id hashset to avoid event repetition
     var events = [];
     json.friends.data.forEach(function (friend) {
       if (friend.events) {
         friend.events.data.forEach(function (event) {
-          if (!(eventsIds.hasOwnProperty(event.id))) {
+          if (!(eventsIds.hasOwnProperty(event.id))) { // only push events that weren't already pushed
             events.push(event);
             eventsIds[event.id] = true;
           }
@@ -99,6 +119,8 @@ var Facebook = (function () {
 
   var fetchAndStoreEventAttendees = function (id) {
     var accessToken = getAccessToken();
+    // Using Facebook Graph API Field Expansion, that's why this is a huge URL.
+    // See: https://developers.facebook.com/docs/reference/api/field_expansion/
     var url = "https://graph.facebook.com/" + id + "?fields=attending.limit(1000).fields(name,gender,picture.width(50).height(50))";
     url += "&access_token=" + accessToken;
     Meteor.http.get(url, {timeout: 30000}, processAttendees);
@@ -122,6 +144,7 @@ var Facebook = (function () {
   };
 
   var logout = function () {
+    // Clear all sessionKeys, current accessToken, userName and datesAndEvents map.
     _.extend(sessionKeys, {"accessToken": true, "userName": true, "datesAndEvents": true});
     _.each(_.keys(sessionKeys), function (k) {
       Session.set(k, null);
@@ -129,6 +152,10 @@ var Facebook = (function () {
     sessionKeys = {};
   };
 
+  /*
+   * Rerun fetchAndStoreEvents when its dependencies are updated! Meteor deps magic!
+   * See: http://docs.meteor.com/#meteor_autorun
+   */
   Meteor.autorun(fetchAndStoreEvents);
 
   return {

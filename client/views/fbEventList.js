@@ -1,3 +1,11 @@
+/*
+ * Template context of selected date events.
+ *
+ * Reactive context! Values are updated automatically,
+ * since SelectedDate and Facebook namespaces
+ * use Meteor Session internaly,
+ * which is a reactive data source.
+ */
 Template.todayEvents.todayContext = function () {
   var todayKey = SelectedDate.getAsKey();
   if (todayKey) {
@@ -11,6 +19,14 @@ Template.todayEvents.todayContext = function () {
   }
 };
 
+/*
+ * Template context of selected date (plus 1 day) events.
+ *
+ * Reactive context! Values are updated automatically,
+ * since SelectedDate and Facebook namespaces
+ * use Meteor Session internaly,
+ * which is a reactive data source.
+ */
 Template.tomorrowEvents.tomorrowContext = function () {
   var todayKey = SelectedDate.getAsKey();
   if (todayKey) {
@@ -25,10 +41,18 @@ Template.tomorrowEvents.tomorrowContext = function () {
   }
 };
 
+/*
+ * Fix CSS columns issue by forcing both .day-content to same height.
+ */
 Template.todayEvents.rendered = function() {
   $helpers.forceAllToSameHeight(".day-content");
 };
 
+/*
+ * Event list click events.
+ * Routes the app to corresponding event page.
+ * See routes.js for routes.
+ */
 (function() {
   var navigateToEventPage = function (ev) {
     $helpers.scrollTo("html, body");
