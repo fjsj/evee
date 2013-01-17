@@ -52,7 +52,7 @@ Handlebars.registerHelper('nl2br', function(text) {
  */
 $helpers = (function () {
   var isScrolledIntoView = function (selector, fully) {
-    // See: http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
+    // See: http://stackoverflow.com/a/488073/145349
     var docViewTop = $(window).scrollTop();
     var docViewBottom = docViewTop + $(window).height();
 
@@ -67,9 +67,20 @@ $helpers = (function () {
   };
 
   var scrollTo = function (selector) {
-    $('html, body').animate({
+    var $viewport = $('html, body');
+
+    $viewport.animate({
       scrollTop: $(selector).offset().top
     }, 500);
+
+    // Stop the animation if the user scrolls. Defaults on .stop() should be fine
+    // See: http://stackoverflow.com/a/10144683/145349
+    $viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(e) {
+      if (e.which > 0 || e.type === "mousedown" || e.type === "mousewheel") {
+        // This identifies the scroll as a user action, stops the animation, then unbinds the event straight after (optional)
+        $viewport.stop().unbind('scroll mousedown DOMMouseScroll mousewheel keyup');
+      }
+    });
   };
 
   var scrollToIfHidden = function (selector, partially, destinationSelector) {
