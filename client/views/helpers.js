@@ -20,15 +20,6 @@ Handlebars.registerHelper('formatDate', function (value) {
 });
 
 /*
- * formatDateAsKey template helper.
- * Converts from Facebook date formats to SelectedDate.keyFormat,
- * which is compatible with Facebook.getEventsByDate function.
- */
-Handlebars.registerHelper('formatDateAsKey', function (value) {
-  return moment(value, Facebook.getFbDateFormats()).format(SelectedDate.getKeyFormat());
-});
-
-/*
  * Translation template helper.
  * Translate the given message to the current language (if necessary).
  */
@@ -75,7 +66,7 @@ $helpers = (function () {
 
     // Stop the animation if the user scrolls. Defaults on .stop() should be fine
     // See: http://stackoverflow.com/a/10144683/145349
-    $viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(e) {
+    $viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup", function (e) {
       if (e.which > 0 || e.type === "mousedown" || e.type === "mousewheel") {
         // This identifies the scroll as a user action, stops the animation, then unbinds the event straight after (optional)
         $viewport.stop().unbind('scroll mousedown DOMMouseScroll mousewheel keyup');

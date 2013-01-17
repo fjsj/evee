@@ -1,4 +1,11 @@
 /*
+ * Fix CSS columns issue by forcing both .day-content to same height.
+ */
+Template.todayEvents.rendered = function() {
+  $helpers.forceAllToSameHeight(".day-content");
+};
+
+/*
  * Template context of selected date events.
  *
  * Reactive context! Values are updated automatically,
@@ -42,8 +49,12 @@ Template.tomorrowEvents.tomorrowContext = function () {
 };
 
 /*
- * Fix CSS columns issue by forcing both .day-content to same height.
+ * formatDateAsKey template helper.
+ * Converts from Facebook date formats to SelectedDate.keyFormat,
+ * which is compatible with Facebook.getEventsByDate function.
  */
-Template.todayEvents.rendered = function() {
-  $helpers.forceAllToSameHeight(".day-content");
-};
+Template.fbEventList.helpers({
+  formatDateAsKey: function (value) {
+    return moment(value, Facebook.getFbDateFormats()).format(SelectedDate.getKeyFormat());
+  }
+});
