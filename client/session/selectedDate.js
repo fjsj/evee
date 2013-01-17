@@ -11,6 +11,10 @@
 var SelectedDate = (function () {
   var keyFormat = "YYYY-MM-DD";
 
+  var getKeyFormat = function () {
+    return keyFormat;
+  };
+
   var getAsKey = function () {
     return Session.get("selectedDate");
   };
@@ -43,7 +47,7 @@ var SelectedDate = (function () {
   setAsMoment(moment());
  
   return {
-    keyFormat: keyFormat,
+    getKeyFormat: getKeyFormat,
     getAsKey: getAsKey,
     getFormatted: getFormatted,
     getTomorrowAsKey: getTomorrowAsKey,

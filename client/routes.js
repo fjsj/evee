@@ -10,6 +10,7 @@ Meteor.Router.add({
     SelectedEvent.clear();
   },
   '/event/:dateKey/:id': function (dateKey, id) {
+    $helpers.scrollTo("html, body");
     var fbEvent = Facebook.getEvent(dateKey, id);
     SelectedEvent.set(fbEvent);
   }

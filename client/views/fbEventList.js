@@ -47,25 +47,3 @@ Template.tomorrowEvents.tomorrowContext = function () {
 Template.todayEvents.rendered = function() {
   $helpers.forceAllToSameHeight(".day-content");
 };
-
-/*
- * Event list click events.
- * Routes the app to corresponding event page.
- * See routes.js for routes.
- */
-(function() {
-  var navigateToEventPage = function (ev) {
-    $helpers.scrollTo("html, body");
-    var fbEvent = this;
-    var eventDateKey = moment(fbEvent.start_time, Facebook.fbDateFormats).format(SelectedDate.keyFormat);
-    Meteor.Router.to('/event/' + eventDateKey + '/' + fbEvent.id);
-    ev.preventDefault();
-  };
-  var fbEventListEvents = {
-    "click .event-info .event-picture a": navigateToEventPage,
-    "click .event-info .event-name a": navigateToEventPage
-  };
-
-  Template.todayEvents.events(fbEventListEvents);
-  Template.tomorrowEvents.events(fbEventListEvents);
-}());

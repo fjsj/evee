@@ -20,6 +20,15 @@ Handlebars.registerHelper('formatDate', function (value) {
 });
 
 /*
+ * formatDateAsKey template helper.
+ * Converts from Facebook date formats to SelectedDate.keyFormat,
+ * which is compatible with Facebook.getEventsByDate function.
+ */
+Handlebars.registerHelper('formatDateAsKey', function (value) {
+  return moment(value, Facebook.fbDateFormats).format(SelectedDate.getKeyFormat());
+});
+
+/*
  * Translation template helper.
  * Translate the given message to the current language (if necessary).
  */

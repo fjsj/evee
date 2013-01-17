@@ -8,8 +8,8 @@
  * login and logout respectively sets and clear the current logged user Facebook access token.
  * getAccessToken returns the logged user (if exists) access token.
  * getUserName works similarly, but returns user's real name.
- * getEventsByDate retuns a map of dates and fetched events objects, if events were already fetched.
- * * The keys of this map of dates follow the keyFormat defined in SelectedDate (see selectedDate.js).
+ * getEventsByDate retuns a list of fetched events objects at a given date, if events were already fetched.
+ * * The given date format follows the keyFormat defined in SelectedDate (see selectedDate.js).
  * getEvent returns the event object with the provided id (and starts to fetch its attendees in background).
  * getEventAttendees returns the attendees array of the event with the provided id, if those attendees were already fetched.
  *
@@ -84,7 +84,7 @@ var Facebook = (function () {
   var eventsToDatesAndEventsMap = function (events) {
     var datesAndEvents = {};
     events.forEach(function (event) {
-      var dateKey = moment(event.start_time, fbDateFormats).format(SelectedDate.keyFormat);
+      var dateKey = moment(event.start_time, fbDateFormats).format(SelectedDate.getKeyFormat());
       datesAndEvents[dateKey] = datesAndEvents[dateKey] || {};
       datesAndEvents[dateKey][event.id] = event;
     });
