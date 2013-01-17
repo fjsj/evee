@@ -24,7 +24,7 @@
             <i class="male"></i> {{#ifIsNull maleRatio}}?{{else}}{{maleRatio}}%{{/ifIsNull}}
           </div>
           <div class="event-content-row facebook-link" title="{{name}}">
-            <i class="icon-facebook-sign icon-2x"></i> <a href="https://www.facebook.com/events/{{id}}"><span class="event-data-text">{{trans "view on Facebook"}}</a></span>
+            <i class="icon-facebook-sign icon-2x"></i> <a href="https://www.facebook.com/events/{{id}}" target="_blank"><span class="event-data-text">{{trans "view on Facebook"}}</a></span>
           </div>
           {{#if description}}
           <div class="event-content-row event-full-description">
@@ -48,9 +48,9 @@
             {{#each attendees}}
               <div class="event-attendee">
                 <div class="attendee-picture">
-                  <a href="https://www.facebook.com/{{id}}"><img src="{{picture.data.url}}" alt="{{name}}"></a>
+                  <a href="https://www.facebook.com/{{id}}" target="_blank"><img src="{{picture.data.url}}" alt="{{name}}"></a>
                 </div><div class="attendee-info">
-                  <a href="https://www.facebook.com/{{id}}">{{name}}</a>
+                  <a href="https://www.facebook.com/{{id}}" target="_blank">{{name}}</a>
                 </div>
               </div>
             {{else}}
