@@ -20,24 +20,93 @@ var Facebook = (function () {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
   var sessionKeys = {};
 
+  // Start of generic private Session functions
+  var sessionGetOrNull = function (key) {
+    return Session.get(key) || null;
+  };
+  var sessionSet = function (key, value) {
+    Session.set(key, value);
+    sessionKeys[key] = true;
+  };
+  // End of generic private Session functions
+
+  // Start of public general functions
   var getFbDateFormats = function () {
     return _.clone(fbDateFormats); // clone it to avoid accidental changes
   };
 
   var login = function (accessToken) {
-    return Session.set("accessToken", accessToken);
+    return sessionSet("accessToken", accessToken);
+  };
+
+  var logout = function () {
+    // Clear all sessionKeys, including current accessToken, userName and datesAndEvents.
+    _.each(_.keys(sessionKeys), function (k) {
+      Session.set(k, null);
+    });
+    sessionKeys = {};
+
+    // Flush HTTP cache
+    try {
+      ClientStore.flush();
+    } catch (e) {
+    }
   };
 
   var getAccessToken = function () {
-    return Session.get("accessToken") || null;
+    return sessionGetOrNull("accessToken");
   };
 
   var getUserName = function () {
-    return Session.get("userName") || null;
+    return sessionGetOrNull("userName");
   };
 
   var setUserName = function (userName) {
-    Session.set("userName", userName);
+    sessionSet("userName", userName);
+  };
+  // End of public general functions
+
+  // Start of functions related to event objects
+  var shouldCache = !AppConfig.isMobile && !ClientStore.isPolyfill();
+
+  // Cross-tab/window HTTP cache. Uses ClientStore.
+  var cachedFacebookHttpGet = function (url, callback) {
+    var cachedValue = null;
+    if (shouldCache) {
+      try {
+        cachedValue = ClientStore.get(url);
+      } catch (e) {
+      }
+    }
+
+    if (cachedValue !== null) {
+      callback(cachedValue[0], cachedValue[1]);
+    } else {
+      var cacheAndCallback = function (error, result) {
+        // Check if accessToken was valid at request time
+        if (result.statusCode == 400) {
+          var json = JSON.parse(result.content);
+          // Invalid request! Expired accessToken.
+          // Page refresh is necessary, to reload Facebook JavaScript SDK.
+          if (json.error.type == "OAuthException") {
+            window.location.reload();
+          }
+        } else {
+          if (shouldCache) {
+            try {
+              var value = [error, result];
+              ClientStore.set(url, value);
+            } catch (e) {
+            }
+          }
+
+          callback(error, result);
+        }
+      };
+      
+      console.log("cache miss with", url);
+      Meteor.http.get(url, {timeout: 30000}, cacheAndCallback);
+    }
   };
 
   var fetchAndStoreEvents = function () {
@@ -46,9 +115,9 @@ var Facebook = (function () {
       var timestamp = moment().startOf("day").unix();
       // Using Facebook Graph API Field Expansion, that's why this is a huge URL.
       // See: https://developers.facebook.com/docs/reference/api/field_expansion/
-      var url = "https://graph.facebook.com/me?fields=name,friends.fields(events.since(" + timestamp + ").limit(25).fields(id,description,start_time,end_time,location,name,venue,picture.width(100).height(100).type(square)))";
+      var url = "https://graph.facebook.com/me?fields=name,friends.fields(events.since(" + timestamp + ").limit(25).fields(id,start_time,end_time,location,name,venue,picture.width(100).height(100).type(square)))";
       url += "&access_token=" + accessToken;
-      Meteor.http.get(url, {timeout: 30000}, processEvents);
+      cachedFacebookHttpGet(url, processEvents);
     }
   };
 
@@ -96,22 +165,24 @@ var Facebook = (function () {
   };
 
   var storeDatesAndEvents = function (datesAndEvents) {
-    Session.set("datesAndEvents", datesAndEvents);
+    sessionSet("datesAndEvents", datesAndEvents);
   };
 
   var getEventsByDate = function (dateKey) {
-    try {
-      return _.values(Session.get("datesAndEvents")[dateKey]);
-    } catch (e) {
+    var datesAndEvents = sessionGetOrNull("datesAndEvents");
+    if (datesAndEvents) {
+      return _.values(datesAndEvents[dateKey]);
+    } else {
       return null;
     }
   };
 
   var getEvent = function (dateKey, id) {
     try {
-      var fbEvent = Session.get("datesAndEvents")[dateKey][id];
+      var fbEvent = sessionGetOrNull("datesAndEvents")[dateKey][id];
       if (fbEvent) {
         fetchAndStoreEventAttendees(id);
+        fetchAndStoreEventDescription(id);
         return fbEvent;
       } else {
         return null;
@@ -120,7 +191,9 @@ var Facebook = (function () {
       return null;
     }
   };
+  // End of functions related to event objects
 
+  // Start of functions related to event attendees
   var fetchAndStoreEventAttendees = function (id) {
     var accessToken = getAccessToken();
     // Using Facebook Graph API Field Expansion, that's why this is a huge URL.
@@ -139,22 +212,38 @@ var Facebook = (function () {
   };
 
   var storeEventAttendees = function (id, attendeesList) {
-    Session.set("attendees" + id, attendeesList);
-    sessionKeys["attendees" + id] = true;
+    sessionSet("attendees" + id, attendeesList);
   };
 
   var getEventAttendees = function (id) {
-    return Session.get("attendees" + id) || null;
+    return sessionGetOrNull("attendees" + id);
+  };
+  // End of functions related to event attendees
+
+  // Start of functions related to event description
+  var fetchAndStoreEventDescription = function (id) {
+    var accessToken = getAccessToken();
+    var url = "https://graph.facebook.com/" + id + "?fields=description";
+    url += "&access_token=" + accessToken;
+    Meteor.http.get(url, {timeout: 30000}, processDescription);
   };
 
-  var logout = function () {
-    // Clear all sessionKeys, current accessToken, userName and datesAndEvents map.
-    _.extend(sessionKeys, {"accessToken": true, "userName": true, "datesAndEvents": true});
-    _.each(_.keys(sessionKeys), function (k) {
-      Session.set(k, null);
-    });
-    sessionKeys = {};
+  var processDescription = function (error, result) {
+    if (result.statusCode === 200) {
+      var json = JSON.parse(result.content);
+      var description = json.description ? json.description : "";
+      storeEventDescription(json.id, description);
+    }
   };
+
+  var storeEventDescription = function (id, description) {
+    sessionSet("description" + id, description);
+  };
+
+  var getEventDescription = function (id) {
+    return sessionGetOrNull("description" + id);
+  };
+  // End of functions related to event description
 
   /*
    * Rerun fetchAndStoreEvents when its dependencies are updated! Meteor deps magic!
@@ -170,6 +259,7 @@ var Facebook = (function () {
     getEventsByDate: getEventsByDate,
     getEvent: getEvent,
     getEventAttendees: getEventAttendees,
+    getEventDescription: getEventDescription,
     logout: logout
   };
 }());

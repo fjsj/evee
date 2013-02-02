@@ -6,6 +6,18 @@ Template.fbEvent.rendered = function () {
 };
 
 /*
+ * Description template variable.
+ * This variable is updated as soon as event description is fully fetched.
+ *
+ * Reactive context! Values are updated automatically,
+ * since Facebook namespace uses Meteor Session internaly,
+ * which is a reactive data source.
+ */
+Template.fbEvent.description = function () {
+  return Facebook.getEventDescription(this.id);
+};
+
+/*
  * Attendees template variable.
  * This variable is updated as soon as event attendees are fully fetched.
  *

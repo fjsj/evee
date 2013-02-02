@@ -6,6 +6,7 @@
   "packages": {
     "moment": {},
     "page-js": {},
-    "router": {}
+    "router": {},
+    "browser-store": {}
   }
 }
