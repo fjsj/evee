@@ -11,10 +11,7 @@ body {
     width: 940px;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 0px;
-}
-
-.navbar-inner {
+    margin-bottom: 0;
 }
 
 .navbar-inverse .navbar-inner {
@@ -24,12 +21,13 @@ body {
 .navbar .navbar-inner {
     min-height: 50px;
     border: none;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
     filter: none;
     -webkit-box-shadow: none;
-    -moz-box-shadow: none
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .navbar-inner .container {
@@ -39,7 +37,7 @@ body {
 .navbar .nav {
     font-family: "Exo", "PT Sans", "Segoe UI", sans-serif;
     float: right;
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .navbar .nav > li {
@@ -48,7 +46,7 @@ body {
 
 .navbar-inverse .nav > li > a {
     color: white;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .navbar-inverse .nav > li > a:hover, .navbar-inverse .nav > .active > a:hover {
@@ -65,7 +63,7 @@ body {
     font-size: 36px;
     line-height: 32px;
     padding: 12px 20px 13px 22px;
-    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
 }
 
 .navbar-form {
@@ -93,11 +91,11 @@ body {
 .hero-unit {
     background: none;
     padding: 30px 60px 50px 60px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     color: white;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 
 .container-shadow {
@@ -120,11 +118,11 @@ body {
     line-height: 20px;
     font-weight: normal;
     margin-top: 8px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .hero-unit p:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .span4 {
@@ -152,8 +150,8 @@ body {
 }
 
 .step-fluid .step-header h3, .step-header-full h3 {
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .step-header-full {
@@ -248,7 +246,7 @@ time span {
 }
 
 .step-fluid .day-content .event-info:last-child .event-description {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .step-fluid .day-content .event-info .event-description i[class^="icon-"],
@@ -258,25 +256,15 @@ time span {
     text-align: center;
 }
 
-.step-fluid .day-content .event-info .event-description .event-name {
-}
-
 .step-fluid .day-content .event-info .event-description .event-name h4 {
     font-size: 16px;
     margin-top: 2px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     line-height: 20px;
 }
 
 .event-row {
     width: 100%;
-}
-
-.step-fluid .day-content .event-info .event-description .event-time,
-.step-fluid .day-content .event-info .event-description .event-location {
-}
-
-.step-fluid .day-content .event-info .event-description .event-ratio {
 }
 
 .male, .female {
@@ -315,8 +303,8 @@ time span {
 }
 
 .mapheader h3 {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-left: 8px;
 }
 
@@ -340,7 +328,7 @@ footer {
 footer p {
     text-align: right;
     margin-right: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     padding-bottom: 2px;
 }
 
@@ -359,7 +347,7 @@ footer a:hover {
         width: 1170px;
     }
     .hero-background {
-        background-position: 0px -136px;
+        background-position: 0 -136px;
     }
     .step-fluid .day-content .event-info .event-description .event-name h4,
     .step-fluid .day-content .event-info .event-description .event-location {
@@ -406,8 +394,8 @@ footer a:hover {
 /* Landscape phones and down */
 @media (max-width: 767px) {
     body {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
     .navbar {
         width: auto;

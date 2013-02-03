@@ -1,5 +1,5 @@
 .event-detailed-info .hero-unit {
-    padding: 0px;
+    padding: 0;
     overflow: hidden;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .event-detailed-info .event-data h2 {
-    margin-top: 0px;
+    margin-top: 0;
     font-size: 18px;
 }
 
