@@ -1,0 +1,54 @@
+<template name="main">
+  {{#constant}}
+    <div id="fb-root"></div>
+  {{/constant}}
+  {{> menu}}
+
+  <div class="container container-background">
+    {{#if selectedEvent}}
+      {{#with selectedEvent}}
+        {{> fbEvent}}
+      {{/with}}
+    {{else}}
+      <div class="hero-background">
+        <div class="hero-unit container-shadow">
+          <h1>{{trans "An easy navigation through Facebook events"}}</h1>
+          <h2>{{trans "Sign in and see all Facebook events you and your friends were invited. An easy and quick way to get social information about events relevant for you."}}</h2>
+        </div>
+      </div>
+
+      <div class="row-steps-fluid">
+        <div class="step-fluid step1">
+          <div class="step-header"><h3>{{trans "Step 1: sign in"}}</h3></div>
+          <div class="step-content">
+            {{> fbLogin}}
+          </div>
+        </div><div class="step-fluid step2">
+          <div class="step-header"><h3>{{trans "Step 2: choose a date"}}</h3></div>
+          <div class="step-content">
+            {{> datepicker}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row-steps-fluid">
+        <div class="step-header-full step3">
+          <h3>{{trans "Step 3: check the events"}}</h3>
+        </div>
+        <div class="step-fluid today">
+          {{> todayEvents}}
+        </div><div class="step-fluid tomorrow">
+          {{> tomorrowEvents}}
+        </div>
+      </div>
+    {{/if}}
+
+    <footer>
+      <p><iframe src="http://ghbtns.com/github-btn.html?user=fjsj&repo=evee&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=fjsj&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="125" height="20"></iframe></p>
+      <p>Made with <a href="http://www.meteor.com/" target="_blank">Meteor</a> by <a href="http://github.com/fjsj" target="_blank">fjsj</a>. Source-code available at <a href="http://github.com/fjsj/evee" target="_blank">GitHub</a>.</p>
+      <p>Background NY picture by <a href="http://www.flickr.com/people/paulobar/" target="_blank">Paulo Barcellos Jr</a>.</p>
+      <p>Background patterns Hexabump by <a href="http://spom.me/" target="_blank">Norbert Levajsics</a> and Hexellence by <a href="http://www.webdesigncreare.co.uk/" target="_blank">Kim Ruddock</a>.</p>
+      <p>Male and female icons by <a href="http://www.fatcow.com/" target="_blank">FatCow</a>. Other icons from <a href="http://fortawesome.github.com/Font-Awesome" target="_blank">Font Awesome</a> by Dave Gandy.</p>
+    </footer>
+  </div> <!-- /container -->
+</template>

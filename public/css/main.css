@@ -1,6 +1,8 @@
 body {
     font-family: "PT Sans", "Segoe UI", "Verdana", "Lucida Grande", sans-serif;
     background: url(/img/hexabump.png) repeat center center scroll;
+    margin: 0;
+    padding: 0;
 }
 
 .container-background {
@@ -402,6 +404,7 @@ footer a:hover {
     }
     .hero-unit {
         padding-top: 20px;
+        padding-bottom: 20px;
     }
     .hero-unit h1 {
         font-family: "Convergence", "PT Sans", "Segoe UI", sans-serif;

@@ -8,10 +8,15 @@
 Meteor.Router.add({
   '/': function () {
     SelectedEvent.clear();
+    return 'main';
   },
   '/event/:dateKey/:id': function (dateKey, id) {
     $helpers.scrollTo("html, body");
     var fbEvent = Facebook.getEvent(dateKey, id);
     SelectedEvent.set(fbEvent);
+    return 'main';
+  },
+  '/test': function () {
+    return 'testReport';
   }
 });

@@ -135,16 +135,18 @@ var Facebook = (function () {
   var jsonToEventList = function (json) {
     var eventsIds = {}; // id hashset to avoid event repetition
     var events = [];
-    json.friends.data.forEach(function (friend) {
-      if (friend.events) {
-        friend.events.data.forEach(function (event) {
-          if (!(eventsIds.hasOwnProperty(event.id))) { // only push events that weren't already pushed
-            events.push(event);
-            eventsIds[event.id] = true;
-          }
-        });
-      }
-    });
+    if (json.friends) {
+      json.friends.data.forEach(function (friend) {
+        if (friend.events) {
+          friend.events.data.forEach(function (event) {
+            if (!(eventsIds.hasOwnProperty(event.id))) { // only push events that weren't already pushed
+              events.push(event);
+              eventsIds[event.id] = true;
+            }
+          });
+        }
+      });
+    }
     return events;
   };
 

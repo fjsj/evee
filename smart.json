@@ -7,6 +7,7 @@
     "moment": {},
     "page-js": {},
     "router": {},
-    "browser-store": {}
+    "browser-store": {},
+    "mocha-web": {}
   }
 }
