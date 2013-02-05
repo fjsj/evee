@@ -51,8 +51,12 @@ Tests.add(function (APP_ACCESS_TOKEN) {
     });
   };
 
-  // mocha testing.
+  // Testing with mocha.
   // See: http://visionmedia.github.com/mocha/
+  // Using Chai expect assertion style.
+  // See: http://chaijs.com/api/bdd/
+  var expect = chai.expect;
+
   describe('Facebook', function () {
     var user1 = null;
     var user2 = null;
@@ -116,8 +120,9 @@ Tests.add(function (APP_ACCESS_TOKEN) {
     describe('#login()', function () {
       it('should set accessToken', function () {
         Facebook.login(user1.access_token);
-        chai.assert.isNotNull(Facebook.getAccessToken());
-        chai.assert.strictEqual(Facebook.getAccessToken(), user1.access_token);
+        var accessToken = Facebook.getAccessToken();
+        expect(accessToken).to.not.be.null;
+        expect(accessToken).to.be.equal(user1.access_token);
       });
 
       it('should automatically fetch friends events', function (done) {
@@ -127,9 +132,9 @@ Tests.add(function (APP_ACCESS_TOKEN) {
           var eventDtAsKey = moment(eventDt, "YYYY-MM-DDThh:mm:ssZZ").format(SelectedDate.getKeyFormat());
           var fbEvents = Facebook.getEventsByDate(eventDtAsKey);
           if (fbEvents) {
-            chai.assert.isArray(fbEvents);
-            chai.assert.lengthOf(fbEvents, 1);
-            chai.assert.strictEqual(fbEvents[0].id, eventId);
+            expect(fbEvents).to.be.an.instanceof(Array);
+            expect(fbEvents).to.have.length(1);
+            expect(fbEvents[0].id).to.be.equal(eventId);
             done();
           }
         });
