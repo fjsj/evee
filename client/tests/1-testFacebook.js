@@ -129,13 +129,17 @@ Tests.add(function (APP_ACCESS_TOKEN) {
         Facebook.login(user1.access_token);
 
         Meteor.autorun(function () {
-          var eventDtAsKey = moment(eventDt, "YYYY-MM-DDThh:mm:ssZZ").format(SelectedDate.getKeyFormat());
-          var fbEvents = Facebook.getEventsByDate(eventDtAsKey);
-          if (fbEvents) {
-            expect(fbEvents).to.be.an.instanceof(Array);
-            expect(fbEvents).to.have.length(1);
-            expect(fbEvents[0].id).to.be.equal(eventId);
-            done();
+          try {
+            var eventDtAsKey = moment(eventDt, "YYYY-MM-DDThh:mm:ssZZ").format(SelectedDate.getKeyFormat());
+            var fbEvents = Facebook.getEventsByDate(eventDtAsKey);
+            if (fbEvents) {
+              expect(fbEvents).to.be.an.instanceof(Array);
+              expect(fbEvents).to.have.length(1);
+              expect(fbEvents[0].id).to.be.equal(eventId);
+              done();
+            }
+          } catch (error) {
+            done(error);
           }
         });
       });
