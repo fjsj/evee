@@ -12,3 +12,4 @@ spiderable
 router
 browser-store
 mocha-web
+coffeescript
