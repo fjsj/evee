@@ -2,7 +2,8 @@
   if (Meteor.isServer) {
     // Serve channel.html file, based on http://stackoverflow.com/a/13871399/145349
     var connect = __meteor_bootstrap__.require("connect");
-
+    var Fiber = __meteor_bootstrap__.require('fibers');
+    
     __meteor_bootstrap__.app
       .use(connect.query())
       .use(function(req, res, next) {
