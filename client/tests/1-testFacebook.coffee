@@ -56,8 +56,7 @@ Tests.add (APP_ACCESS_TOKEN) ->
     @.timeout 5 * 60 * 1000  # 5 minutes suit timeout
 
     before (done) ->
-      if not APP_ACCESS_TOKEN
-        throw new Error "Invalid access token"
+      throw new Error "Invalid access token" unless APP_ACCESS_TOKEN
 
       fetchTestUsers (json) ->
         if json.data.length >= 2
