@@ -79,7 +79,7 @@ var Facebook = (function () {
       }
     }
 
-    if (cachedValue !== null) {
+    if (cachedValue !== null && !cachedValue[1].error) {
       callback(cachedValue[0], cachedValue[1]);
     } else {
       var cacheAndCallback = function (error, result) {
@@ -104,7 +104,6 @@ var Facebook = (function () {
         }
       };
       
-      console.log("cache miss with", url);
       Meteor.http.get(url, {timeout: 30000}, cacheAndCallback);
     }
   };
