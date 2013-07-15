@@ -7,7 +7,7 @@
  *
  * An event is selected when clicked at. Then its page is loaded.
  */
-var SelectedEvent = (function () {
+SelectedEvent = (function () {
   var get = function () {
     return Session.get("selectedEvent") || null;
   };

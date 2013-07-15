@@ -3,7 +3,7 @@
  * Exposes functions that allows translations to supported languages,
  * getting of date formats and getting and setting of currently selected language.
  */
-var I18N = (function () {
+I18N = (function () {
   var messagesEN_PT = {
     "An easy navigation through Facebook events": "Seus eventos do Facebook em um só lugar",
     "Sign in and see all Facebook events you and your friends were invited. An easy and quick way to get social information about events relevant for you.": "Entre e veja os eventos do Facebook que você e seus amigos foram convidados. Uma visualização fácil e rápida de todos eventos relevantes para você.",

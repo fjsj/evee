@@ -1,13 +1,9 @@
 {
-  "meteor": {
-    "git": "https://github.com/meteor/meteor.git",
-    "branch": "master"
-  },
   "packages": {
     "moment": {},
     "page-js": {},
     "router": {},
-    "browser-store": {},
-    "mocha-web": {}
+    "mocha-web": {},
+    "modernizr-meteor": {}
   }
 }

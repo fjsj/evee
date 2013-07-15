@@ -16,7 +16,7 @@
  * Events objects are fetched automatically every time access token changes,
  * since the internal fetchAndStoreEvents function is in a autorun context.
  */
-var Facebook = (function () {
+Facebook = (function () {
   var fbDateFormats = ["YYYY-MM-DDThh:mm:ssZZ", "YYYY-MM-DD", "YYYY-MM-DDThh:mm:ss"];
   var sessionKeys = {};
 
@@ -67,7 +67,7 @@ var Facebook = (function () {
   // End of public general functions
 
   // Start of functions related to event objects
-  var shouldCache = !AppConfig.isMobile && !ClientStore.isPolyfill();
+  var shouldCache = !AppConfig.isMobile && ClientStore.isAvailable();
 
   // Cross-tab/window HTTP cache. Uses ClientStore.
   var cachedFacebookHttpGet = function (url, callback) {

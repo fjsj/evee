@@ -6,7 +6,7 @@
  * App ID varies if app is running at dev, because domain configurations
  * are hardcoded at Facebook Developers apps page (https://developers.facebook.com/apps).
  */
-var AppConfig = (function () {
+AppConfig = (function () {
   var isLocalhost = window.location.href.indexOf("localhost") !== -1;
 
   var isMobile = (function() {  // Based on: http://detectmobilebrowsers.com/

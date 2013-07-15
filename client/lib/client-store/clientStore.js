@@ -3,22 +3,25 @@
  * through a localStorage client provided by Meteor.BrowserStore.
  *
  * Exposes get, set and flush operations and
- * a isPolyfill function, which tells if the
- * current localStorage is a polyfill implementation.
+ * a isAvailable function, which tells if
+ * localStorage is implemented in client.
  */
-var ClientStore = (function () {
-  var isPolyfill = function () {
-    var l = window.localStorage.length;
-    return _.isUndefined(l) || _.isNull(l);
+ClientStore = (function () {
+  var keys = [];
+
+  var isAvailable = function () {
+    return Modernizr.localstorage;
   };
 
   var get = function (key) {
     var timestampNow = moment().unix();
-    var obj = Meteor.BrowserStore.get(key);
+
+    var obj = localStorage.getItem(key);
     if (obj) {
       if (timestampNow < obj.expire) {
         return obj.value;
       } else {
+        localStorage.removeItem(key);
         return null;
       }
     } else {
@@ -31,21 +34,19 @@ var ClientStore = (function () {
       expire = moment().add('hours', 1).unix();
     }
     var obj = {'expire': expire, 'value': value};
-    Meteor.BrowserStore.set(key, obj);
+    localStorage.setItem(key, obj);
+    keys.push(key);
   };
 
   var flush = function () {
-    var toRemove = [];
-    Meteor.BrowserStore._each(function (key) {
-      toRemove.push(key);
+    _(keys).each(function (key) {
+      localStorage.removeItem(key);
     });
-    _.each(toRemove, function (key) {
-      Meteor.BrowserStore.set(key, null);
-    });
+    keys = [];
   };
 
   return {
-    isPolyfill: isPolyfill,
+    isAvailable: isAvailable,
     get: get,
     set: set,
     flush: flush

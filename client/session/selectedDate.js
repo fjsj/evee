@@ -8,7 +8,7 @@
  *
  * A date is selected through the datepicker (see datepicker.js).
  */
-var SelectedDate = (function () {
+SelectedDate = (function () {
   var keyFormat = "YYYY-MM-DD";
 
   var getKeyFormat = function () {

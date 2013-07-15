@@ -6,10 +6,6 @@
 preserve-inputs
 http
 jquery
-moment
 underscore
 spiderable
-router
-browser-store
-mocha-web
 coffeescript
